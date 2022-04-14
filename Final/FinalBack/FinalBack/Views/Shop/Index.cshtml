@@ -1,0 +1,257 @@
+﻿@model ShopViewModel
+    <!-- Main Start -->
+<main>
+    <section id="shop-nav-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="shop-nav-area">
+                        <p><a asp-controller="home" asp-action="index">Home </a><span>/</span> Shop</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="shop-area-section">
+        <div class="container">
+            <div class="row">
+                <!-- Filters -->
+                <div class="col-xl-3 col-lg-4">
+                    <div class="category-filter" style="box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;margin-bottom:20px">
+                        <h3 class="category-filter-header">Product Categories</h3>
+                        <div class="shop-filter-categories">
+                            @foreach (var category in Model.Categories)
+                            {
+                                <div class="form-check form-switch" style="padding-left:40px;color:#666">
+                                    <input class="form-check-input" form="filterForm" @(ViewBag.CategoryId == category.Id ? "checked" : "") name="categoryId" type="radio" value="@category.Id" id="category-@category.Id">
+                                    <label class="form-check-label" for="category-@category.Id">@category.Name <span>(@( (Model.AllProducts.Where(x=>x.SubCategory.Category.Id == category.Id)).Count()))</span></label>
+                                </div>
+                            }
+                        </div>
+                    </div>
+                    <div class="category-filter" style="box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;">
+                        <h3 class="category-filter-header">Product SubCategories</h3>
+                        <div class="shop-filter-categories">
+                            @foreach (var subcategory in Model.SubCategories)
+                            {
+                                <div class="form-check form-switch" style="padding-left:40px;color:#666">
+                                    <input class="form-check-input" form="filterForm" @(ViewBag.SubCategoryId == subcategory.Id ? "checked" : "") name="subcategoryId" type="radio" value="@subcategory.Id" id="subcategory-@subcategory.Id">
+                                    <label class="form-check-label" for="subcategory-@subcategory.Id">@subcategory.Name <span>(@( (Model.AllProducts.Where(x=>x.SubCategory.Id == subcategory.Id)).Count()))</span></label>
+                                </div>
+                            }
+                        </div>
+                    </div>
+                    <div class="brand-filter" style="box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;">
+                        <h3 class="brand-filter-header">Product Brands</h3>
+                        <div class="shop-filter-brands">
+                            @foreach (var brand in Model.Brands)
+                            {
+                                <div class="form-check form-switch" style="padding-left:40px;color:#666">
+                                    <input class="form-check-input" form="filterForm" @(ViewBag.brandId == brand.Id ? "checked" : "") name="brandId" type="radio" value="@brand.Id" id="brand-@brand.Id">
+                                    <label class="form-check-label" for="brand-@brand.Id">@brand.Name <span>(@( (Model.AllProducts.Where(x=>x.BrandId == brand.Id)).Count()))</span></label>
+                                </div>
+                            }
+                        </div>
+                    </div>
+                    <div class="brand-filter" style="box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;margin-bottom:20px">
+                        <h3 class="brand-filter-header">Product Colors</h3>
+                        <div class="shop-filter-brands">
+                            @foreach (var color in Model.Colors)
+                            {
+                                <div class="form-check form-switch" style="padding-left:40px;color:#666">
+                                    <input class="form-check-input" form="filterForm" @(ViewBag.colorId == color.Id ? "checked" : "") name="colorId" type="radio" value="@color.Id" id="color-@color.Id">
+                                    <label class="form-check-label" for="color-@color.Id">@color.Name <span>(@( (Model.AllProducts.Where(x=>x.Color.Id == color.Id)).Count()))</span></label>
+                                </div>
+                            }
+                        </div>
+                    </div>
+                    <div class="price-filter" style="box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;">
+                        <h3 class="price-filter-header">Filter By Price</h3>
+                        <div class="wrapper">
+                            <fieldset class="filter-price">
+
+                                <div class="price-field">
+                                    <input type="range" form="filterForm" name="minPrice" min="@Model.MinPrice" max="@Model.MaxPrice" value="@Model.MinPrice" id="lower">
+                                    <input type="range" form="filterForm" name="maxPrice" min="@Model.MinPrice" max="@Model.MaxPrice" value="@Model.MaxPrice" id="upper">
+                                </div>
+                                <div class="price-wrap">
+                                    <div class="price-wrap-1">
+                                        <input id="one">
+                                        <label for="one">$</label>
+                                    </div>
+                                    <div class="price-wrap_line">-</div>
+                                    <div class="price-wrap-2">
+                                        <input id="two">
+                                        <label for="two">$</label>
+                                    </div>
+                                </div>
+                            </fieldset>
+                        </div>
+                    </div>
+                    <form id="filterForm" asp-action="index" method="get">
+                        <button type="submit" class="filter-btn" style="border:none;width: 100%;margin-top:50px;margin-bottom:30px; background: #e3a51e;color:white;height:50px;border-radius:5px">Filter</button>
+                    </form>
+                </div>
+                <!-- Products -->
+                <div class="col-xl-9 col-lg-8">
+                    <div class="shop-banner">
+                        <div class="banner-img">
+                            <img src="https://themepure.net/template/dukamarket/dukamarket/assets/img/banner/sl-banner.jpg" class="banner-1" alt="">
+                            <img src="https://themepure.net/template/dukamarket/dukamarket/assets/img/banner/sl-banner-sm.png" class="banner-inner" alt="">
+                            <div class="banner-content">
+                                <div class="banner-text">
+                                    Hurry Up!
+                                    <br>
+                                    Free Shipping All Order Over $99
+                                </div>
+                                <a href="shop.html">Discover Now</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="product-list-top">
+                        <div class="product-filter-wrap">
+                            <div class="row align-items-center">
+                                <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6">
+                                    <div class="product-filter">
+                                        <div class="product-col">
+                                            <ul class="nav-tabs">
+                                                <li class="nav-tab-item">
+                                                    <button class="four-col">
+                                                        <i class="fa-solid fa-table-cells"></i>
+                                                    </button>
+                                                </li>
+                                                <li class="nav-tab-item">
+                                                    <button class="five-col">
+                                                        <i class="fa-solid fa-list"></i>
+                                                    </button>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <div class="product-result">
+                                            <p>Showing 1-20 of 29 results</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6">
+                                    <div class="product-filter-right">
+                                        <div class="product-sorting">
+                                            <select class="form-select" aria-label="Default select example">
+                                                <option selected>10</option>
+                                                <option value="1">20</option>
+                                                <option value="2">30</option>
+                                            </select>
+                                        </div>
+                                        <div class="product-sorting">
+                                            <select class="form-select" aria-label="Default select example">
+                                                <option selected>Latest</option>
+                                                <option value="1">New</option>
+                                                <option value="2">Up Coming</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tap-content-four">
+                        <div class="row">
+                            @foreach (var item in Model.Products)
+                            {
+                                <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6">
+                                    <div class="product-card">
+                                        <div class="card-image">
+                                            <img style="height:119px;object-fit:contain" src="~/uploads/products/@item.ProductImages.FirstOrDefault(x=>x.ThumbStatus==true)?.Image" alt="">
+                                            <a style="display:flex;text-decoration:none;color:black;text-align:center;align-items:center;justify-content:center;top:0" class="add-to-basket" asp-action="addbasket" asp-controller="shop" asp-route-id="@item.Id">
+                                                <i class="fa-solid fa-basket-shopping"></i>
+                                            </a>
+                                            <a style="display:flex;text-decoration:none;color:black;text-align:center;align-items:center;justify-content:center;top:70px;right:0" asp-controller="home" asp-action="GetProduct" asp-route-id="@item.Id" class="quick-modal quick-view" data-toggle="modal" data-target=".bd-example-modal-lg"><i class="fa-solid fa-eye" data-toggle="modal" data-target=".bd-example-modal-lg"></i></a>
+                                        </div>
+                                        <div class="card-content">
+                                            <div class="header" style="text-align:center">
+                                                @item.Brand.Name @item.Name
+                                            </div>
+                                            <div class="add-to-card">
+                                                <button class="add-to-card-button"><a style="text-decoration:none;color:white" asp-controller="home" asp-action="productdetail" asp-route-id="@item.Id">Details</a></button>
+                                            </div>
+                                            <div class="card-rating">
+                                                @for (int i = 1; i <= 5; i++)
+                                                {
+                                                    <i class="@(item.Rate>= i ? "fas" : "far") fa-star"></i>
+                                                }
+                                            </div>
+                                            <div class="card-price">
+                                                @if (item.DiscountPercent > 0)
+                                                {
+                                                    <span>$@((item.SalePrice* (1- item.DiscountPercent/100)).ToString("0.00")) <del style="color:red">$@item.SalePrice</del></span>
+                                                }
+                                                else
+                                                {
+                                                    <span>$@item.SalePrice</span>
+                                                }
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            }
+                        </div>
+                    </div>
+                    <div class="pagination-block">
+                        <div class="pagination">
+                            <button value="1"><</button>
+                            @for (int i = 1; i <= ViewBag.TotalPage; i++)
+                            {
+                                <button class="@(i == ViewBag.PageIndex?"active":"")"><a style="color:black;text-decoration:none" href="@Url.Action("index","shop",new { categoryId=ViewBag.catId,page=i})">@i</a></button>
+                            }
+                            <button value="1">></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <div class="modal fade bd-example-modal-lg quick-view-body" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                ...
+            </div>
+        </div>
+    </div>
+</main>
+<!-- Main End  -->
+@section Scripts { 
+    <script>
+    var lowerSlider = document.querySelector('#lower');
+    var upperSlider = document.querySelector('#upper');
+
+    document.querySelector('#two').value = @((double)Model.MaxPrice);
+    document.querySelector('#one').value = @((double)Model.MinPrice);
+
+    var lowerVal = @((double)Model.MinPrice);
+    var upperVal = @((double)Model.MaxPrice);
+
+    upperSlider.oninput = function () {
+        lowerVal = parseInt(lowerSlider.value);
+        upperVal = parseInt(upperSlider.value);
+
+        if (upperVal < lowerVal + 4) {
+            lowerSlider.value = upperVal - 4;
+            if (lowerVal == lowerSlider.min) {
+                upperSlider.value = 4;
+            }
+        }
+        document.querySelector('#two').value = this.value
+    };
+
+    lowerSlider.oninput = function () {
+        lowerVal = parseInt(lowerSlider.value);
+        upperVal = parseInt(upperSlider.value);
+        if (lowerVal > upperVal - 4) {
+            upperSlider.value = lowerVal + 4;
+            if (upperVal == upperSlider.max) {
+                lowerSlider.value = parseInt(upperSlider.max) - 4;
+            }
+        }
+        document.querySelector('#one').value = this.value
+    };
+    </script>
+}

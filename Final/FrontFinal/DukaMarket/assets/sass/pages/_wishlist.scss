@@ -1,0 +1,85 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Rubik", sans-serif;
+}
+main{
+    #custom-banner-section{
+        width: 100%;
+        height: 360px;
+        margin-bottom: 40px;
+        background-image: url(https://themepure.net/template/dukamarket/dukamarket/assets/img/banner/page-banner-4.jpg);
+        background-position: center;
+        background-repeat: no-repeat;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        .page-header{
+            text-align: center;
+            color: white;
+            .page-header-text{
+                font-size: 60px;
+            }
+            span{
+                a{
+                    text-decoration: none;
+                    color: #666;
+                }
+            }
+        }
+    }
+    #wishlist-products-section{
+       .container{
+           overflow-y: hidden;
+        .table{
+            th{
+                text-align: center;
+            }
+            td{
+                height: 130px;
+                line-height: 130px;
+                text-align: center;
+                img{
+                    width: 130px;
+                }  
+                button{
+                    background-color: #fcbe00;
+                    border: none;
+                    color: white;
+                    width: 100%;
+                    height: 50px;
+                    line-height: 50px;
+                    transition: 0.3s linear ;
+                    &:hover{
+                        background-color: white;
+                        border:1px solid #fcbe00;
+                        color: black;
+                    }
+                }
+                i{
+                    cursor: pointer;
+                    transition: 0.3s linear;
+                    &:hover{
+                        color: #fcbe00;
+                    }
+                }
+            }
+           }
+       }
+          
+       
+    }
+    @media only screen and (max-width: 768px) {
+        .product-name-th{
+            display: none;
+        }
+        .product-name-td{
+            display: none;
+        }
+        .add-to-card{
+            font-size: 10px;
+        }
+
+    }
+}

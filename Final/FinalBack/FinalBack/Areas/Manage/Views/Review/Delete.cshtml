@@ -1,0 +1,23 @@
+﻿@model Review
+@{
+    ViewData["Title"] = "Delete";
+}
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-lg-8 mx-auto">
+            <h1>Delete</h1>
+            <div class="card" style="width: 18rem;">
+                <div class="card-body">
+                    <h5 class="card-title">@Model.Text</h5>
+                    <a asp-action="index" class="card-link btn btn-primary">Go to list</a>
+                    <form asp-action="delete" method="post" class="d-inline-block">
+                        <input type="hidden" value="@Model.Id" name="Id" />
+                        <button type="submit" class="btn btn-danger">Delete</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,52 @@
+﻿@model AdminCreateViewModel
+@{
+    ViewData["Title"] = "Create";
+}
+<div class="container">
+    <div class="row">
+        <div class="col-lg-8 mx-auto">
+            <h1>Create</h1>
+            <form asp-action="create" method="post" enctype="multipart/form-data">
+                <div class="form-group">
+                    <label asp-for="UserName">Username</label>
+                    <input class="form-control" asp-for="UserName" placeholder="Enter Username">
+                    <span class="text-danger" asp-validation-for="UserName"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Name">Name</label>
+                    <input class="form-control" asp-for="Name" placeholder="Enter Name">
+                    <span class="text-danger" asp-validation-for="Name"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Surname">Surname</label>
+                    <input class="form-control" asp-for="Surname" placeholder="Enter Surname">
+                    <span class="text-danger" asp-validation-for="Surname"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Email">Email</label>
+                    <input class="form-control" asp-for="Email" placeholder="Enter Email">
+                    <span class="text-danger" asp-validation-for="Email"></span>
+                </div>
+                <div class="form-group col-lg-4">
+                    <label asp-for="Role">Role</label>
+                    <select class="form-control" asp-for="Role">
+                        <option value="Admin">Admin</option>
+                        <option value="Creator">Creator</option>
+                        <option value="Editor">Editor</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Password">Password</label>
+                    <input class="form-control" asp-for="Password" placeholder="Enter Password">
+                    <span class="text-danger" asp-validation-for="Password"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="ConfirmPassword">Confirm Password</label>
+                    <input class="form-control" asp-for="ConfirmPassword" placeholder="Enter Confirm Password">
+                    <span class="text-danger" asp-validation-for="ConfirmPassword"></span>
+                </div>
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,74 @@
+﻿@model MemberUpdateViewModel
+<form asp-action="edit" method="post" id="member-update-form">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="checkbox-form">
+                <h3>Billing Details</h3>
+                <div class="row">
+                    <div class="col-md-6">
+                        <label asp-for="Country">Country<span>*</span></label>
+                        <input type="text" id="country" asp-for="Country" />
+                        <span asp-validation-for="Country" class="text-danger"></span>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="username" asp-for="UserName">Username<span>*</span></label>
+                        <input type="text" id="username" asp-for="UserName" />
+                        <span asp-validation-for="UserName" class="text-danger"></span>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="fistname" asp-for="FirstName">First Name<span>*</span></label>
+                        <input type="text" id="firstname" asp-for="FirstName" />
+                        <span asp-validation-for="FirstName" class="text-danger"></span>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="surname" asp-for="Surname">Surname<span>*</span></label>
+                        <input type="text" id="surnmae" asp-for="Surname" />
+                        <span asp-validation-for="FirstName" class="text-danger"></span>
+                    </div>
+                    <div class="col-md-12">
+                        <label for="adress" asp-for="Adress">Adress <span>*</span></label>
+                        <input type="text"
+                               asp-for="Adress"
+                               id="adress"
+                               placeholder="Street adress" />
+                        <span asp-validation-for="Adress" class="text-danger"></span>
+                    </div>
+                    <div class="col-md-12">
+                        <label asp-for="City" for="Towncity">Town / City <span>*</span></label>
+                        <input type="text" asp-for="City" id="towncity" />
+                        <span asp-validation-for="City" class="text-danger"></span>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="email" asp-for="Email">Email <span>*</span></label>
+                        <input type="email" asp-for="Email" id="email" />
+                        <span asp-validation-for="Email" class="text-danger"></span>
+
+                    </div>
+                    <div class="col-md-6">
+                        <label asp-for="Phonenumber" for="phone">Phone <span>*</span></label>
+                        <input type="text" id="phone" asp-for="Phonenumber" />
+                        <span asp-validation-for="Phonenumber" class="text-danger"></span>
+                    </div>
+                    <div class="col-md-12">
+                        <label asp-for="CurrentPassword" for="currentpassword">Current Password <span>*</span></label>
+                        <input type="password" id="currentpassword" asp-for="CurrentPassword" />
+                        <span asp-validation-for="CurrentPassword" class="text-danger"></span>
+                    </div>
+                    <div class="col-md-6">
+                        <label asp-for="Password" for="password">Password <span>*</span></label>
+                        <input type="password" id="password" asp-for="Password" />
+                        <span asp-validation-for="Password" class="text-danger"></span>
+                    </div>
+                    <div class="col-md-6">
+                        <label asp-for="ConfirmPassword" for="confirmpassword">Confirm Password <span>*</span></label>
+                        <input type="password" id="confirmpassword" asp-for="ConfirmPassword" />
+                        <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+                    </div>
+                    <div class="submit-btn">
+                        <button type="submit" form="member-update-form">Submit</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>

@@ -1,0 +1,26 @@
+﻿@model AdminEditViewModel
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Areas/Manage/Views/Shared/_Layout.cshtml";
+}
+<div class="container">
+    <div class="row">       
+        <div class="col-12">
+            <h1>Edit</h1>
+            <div class="form-group">
+                <form asp-action="edit" method="post">
+                    <input type="hidden" asp-for="AdminId" value="@ViewBag.AdminId" />
+                    <input type="hidden" asp-for="CurrentRole" value="@ViewBag.Role" />
+                    <label asp-for="NewRole">Role</label>
+                    <select class="form-control" asp-for="NewRole">
+                        <option value="Admin">Admin</option>
+                        <option value="Creator">Creator</option>
+                        <option value="Editor">Editor</option>
+                    </select>
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+

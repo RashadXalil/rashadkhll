@@ -1,0 +1,30 @@
+﻿@model Feature
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col-lg-8 mx-auto">
+            <h1>Edit</h1>
+            <form asp-action="edit" method="post" enctype="multipart/form-data">
+                <div class="form-group">
+                    <label asp-for="Title">Title</label>
+                    <input class="form-control" asp-for="Title" placeholder="Enter Title">
+                    <span class="text-danger" asp-validation-for="Title"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Description">Desc</label>
+                    <input class="form-control" asp-for="Description" placeholder="Enter Desc">
+                    <span class="text-danger" asp-validation-for="Description"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Image">Icon</label>
+                    <input class="form-control" asp-for="Image" placeholder="Icon">
+                    <span class="text-danger" asp-validation-for="Image"></span>
+                </div>
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,30 @@
+﻿@model Settings
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col-lg-8 mx-auto">
+            <h1>Edit</h1>
+            <form asp-action="edit" method="post" enctype="multipart/form-data">
+                <div class="form-group">
+                    <label asp-for="Key">Key</label>
+                    <input class="form-control" asp-for="Key" placeholder="Enter Key">
+                    <span class="text-danger" asp-validation-for="Key"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Value">Value</label>
+                    <input class="form-control" asp-for="Value" placeholder="Enter Value">
+                    <span class="text-danger" asp-validation-for="Value"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="ImageFile">ImageFile</label>
+                    <input class="form-control" asp-for="ImageFile" placeholder="Enter Order">
+                    <span class="text-danger" asp-validation-for="ImageFile"></span>
+                </div>
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+        </div>
+    </div>
+</div>

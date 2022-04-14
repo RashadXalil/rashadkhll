@@ -1,0 +1,45 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Areas\Manage\Models\**" />
+    <Content Remove="Areas\Manage\Models\**" />
+    <EmbeddedResource Remove="Areas\Manage\Models\**" />
+    <None Remove="Areas\Manage\Models\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="wwwroot\assets\img\brands\" />
+    <Folder Include="wwwroot\assets\img\products\" />
+    <Folder Include="wwwroot\uploads\features\" />
+    <Folder Include="wwwroot\uploads\blogs\" />
+    <Folder Include="wwwroot\uploads\brands\" />
+    <Folder Include="wwwroot\uploads\branches\" />
+    <Folder Include="wwwroot\uploads\categories\" />
+    <Folder Include="wwwroot\uploads\teammembers\" />
+    <Folder Include="wwwroot\uploads\products\" />
+    <Folder Include="wwwroot\uploads\sliders\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Castle.Windsor" Version="5.1.1" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="3.1.22" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.NewtonsoftJson" Version="3.1.22" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="3.1.22" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="3.1.22">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="3.1.22" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="3.1.22">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="3.1.5" />
+    <PackageReference Include="MimeKit" Version="3.2.0" />
+  </ItemGroup>
+
+</Project>

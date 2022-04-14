@@ -1,0 +1,305 @@
+﻿@model HomeViewModel
+<main>
+    <section id="custom-banner-section-aboutus">
+        <div class="page-header">
+            <p class="page-header-text">About Us</p>
+            <p class="page-header-p">
+                A wonderful serenity has taken possession of my entire soul, like
+                these sweet mornings of spring which I enjoy with my whole heart.
+            </p>
+            <button><a asp-controller="shop" asp-action="index" style="text-decoration:none;color:black">Discover Now</a></button>
+        </div>
+    </section>
+    <section id="about-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-6 col-lg-6">
+                    <div class="about-content">
+                        <span>ABOUT OUR ONLINE STORE</span>
+                        <h4>Hello,</h4>
+                        <h5>With 25+ Years Of Experience</h5>
+                        <p class="about-text">
+                            Over 25 years Dukamarket helping companies reach their
+                            <br />
+                            financial and branding goals.
+                        </p>
+                        <p class="about-content-text">
+                            The perfect way to enjoy brewing tea on low hanging fruit to
+                            identify. Duis autem vel eum iriure dolor in hendrerit in
+                            vulputate velit esse molestie consequat, vel illum dolore eu
+                            feugiat nulla facilisis. For me, the most important part of
+                            improving at photography.
+                        </p>
+                    </div>
+                </div>
+                <div class="col-xl-6 col-lg-6">
+                    <div class="about-section-img">
+                        <img src="https://themepure.net/template/dukamarket/dukamarket/assets/img/about/about-b.png"
+                             alt="" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="services-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="services-section-title">
+                        <span>How It Works</span>
+                        <h4>Complate Customer ideas</h4>
+                        <p>
+                            The perfect way to enjoy brewing tea on low hanging fruit to
+                            identify. Duis autem vel eum iriure dolor in hendrerit in
+                            vulputate velit esse molestie consequat, vel illum dolore eu
+                            feugiat nulla facilisis.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+               
+                @for (int i = 0; i < Model.Services.Count; i++)
+                {
+                    <div class="col-xl-4 col-lg-4 col-md-6">
+                        <div class="service-item">
+                            <div class="service-icon">
+                                <i class="@Model.Services[i].Image"></i>
+                            </div>
+                            <h6>@Model.Services[i].Title</h6>
+                            <p>
+                                @Model.Services[i].Desc
+                            </p>
+                            <div class="service-number">
+                                <span>0@(i+1)</span>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </section>
+    <section id="technology-index-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="technology-index-section-title">
+                        <span>Technology Index</span>
+                        <h4>Let’s Get Creative</h4>
+                        <p>
+                            The perfect way to enjoy brewing tea on low hanging fruit to
+                            identify. Duis autem vel eum iriure dolor in hendrerit in
+                            vulputate velit esse molestie consequat, vel illum dolore eu
+                            feugiat nulla facilisis.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xl-6 col-lg-6">
+                    <div class="tech-index-item">
+                        <div class="tech-index-item-img">
+                            <img src="https://themepure.net/template/dukamarket/dukamarket/assets/img/about/ab-01.jpg"
+                                 alt="" />
+                        </div>
+                        <div class="row">
+                            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6">
+                                <div class="ab-counter-item">
+                                    <div class="ab-counter">
+                                        <div class="counter-icon">
+                                            <img src="https://themepure.net/template/dukamarket/dukamarket/assets/img/about/c-icon-01.png"
+                                                 alt="" />
+                                        </div>
+                                        <div class="counter-info">
+                                            <span>8262</span>
+                                            <p>+</p>
+                                        </div>
+                                    </div>
+                                    <h5>Active Clients</h5>
+                                    <p>
+                                        Sed ut perspiciatis unde omnis iste natus sit
+                                        accusantium doloremque laudantium totam.
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6">
+                                <div class="ab-counter-item">
+                                    <div class="ab-counter">
+                                        <div class="counter-icon">
+                                            <img src="https://themepure.net/template/dukamarket/dukamarket/assets/img/about/c-icon-01.png"
+                                                 alt="" />
+                                        </div>
+                                        <div class="counter-info">
+                                            <span>4268</span>
+                                            <p>+</p>
+                                        </div>
+                                    </div>
+                                    <h5>Projects Done</h5>
+                                    <p>
+                                        Sed ut perspiciatis unde omnis iste natus sit
+                                        accusantium doloremque laudantium totam.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-6 col-lg-6">
+                    <div class="tech-index-item">
+                        <div class="tech-index-item-img">
+                            <img src="https://themepure.net/template/dukamarket/dukamarket/assets/img/about/ab-02.jpg"
+                                 alt="" />
+                        </div>
+                        <div class="row">
+                            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6">
+                                <div class="ab-counter-item">
+                                    <div class="ab-counter">
+                                        <div class="counter-icon">
+                                            <img src="https://themepure.net/template/dukamarket/dukamarket/assets/img/about/c-icon-01.png"
+                                                 alt="" />
+                                        </div>
+                                        <div class="counter-info">
+                                            <span>643</span>
+                                            <p>+</p>
+                                        </div>
+                                    </div>
+                                    <h5>Team Advisors</h5>
+                                    <p>
+                                        Sed ut perspiciatis unde omnis iste natus sit
+                                        accusantium doloremque laudantium totam.
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6">
+                                <div class="ab-counter-item">
+                                    <div class="ab-counter">
+                                        <div class="counter-icon">
+                                            <img src="https://themepure.net/template/dukamarket/dukamarket/assets/img/about/c-icon-01.png"
+                                                 alt="" />
+                                        </div>
+                                        <div class="counter-info">
+                                            <span>269</span>
+                                            <p>k</p>
+                                        </div>
+                                    </div>
+                                    <h5>Users Online</h5>
+                                    <p>
+                                        Sed ut perspiciatis unde omnis iste natus sit
+                                        accusantium doloremque laudantium totam.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="our-team-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="our-team-section-title">
+                        <span>THE TEAM</span>
+                        <h4>Meet Our Team</h4>
+                        <p>
+                            The perfect way to enjoy brewing tea on low hanging fruit to
+                            identify. Duis autem vel eum iriure dolor in hendrerit in
+                            vulputate velit esse molestie consequat, vel illum dolore eu
+                            feugiat nulla facilisis.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                @foreach (var item in Model.Members)
+                {
+                    <div class="col-xl-4 col-lg-4 col-md-6 col-sm-6">
+                        <div class="team-member">
+                            <div class="team-member-img">
+                                <img src="~/uploads/teammembers/@item.Image"
+                                     alt="" />
+                            </div>
+                            <div class="team-member-about">
+                                <h5>@item.Name @item.Surname</h5>
+                                <span>@item.Position</span>
+                            </div>
+                            <div class="row">
+                                <div class="team-member-accs">
+                                    <div class="team-member-acc" id="facebook">
+                                        <i class="fa-brands fa-facebook-f"></i>
+                                    </div>
+                                    <div class="team-member-acc" id="twitter">
+                                        <i class="fa-brands fa-twitter"></i>
+                                    </div>
+                                    <div class="team-member-acc" id="dribble">
+                                        <i class="fa-solid fa-basketball"></i>
+                                    </div>
+                                    <div class="team-member-acc" id="youtube">
+                                        <i class="fa-brands fa-youtube"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </section>
+    <section id="about-us-location-section">
+        <div class="container">
+            <div class="row">
+                <div class="location-section-title">
+                    <span>Location Store</span>
+                    <h4>Where We Are</h4>
+                    <p>
+                        The perfect way to enjoy brewing tea on low hanging fruit to
+                        identify. Duis autem vel eum iriure dolor in hendrerit in
+                        vulputate velit esse molestie consequat, vel illum dolore eu
+                        feugiat nulla facilisis.
+                    </p>
+                </div>
+            </div>
+            <div class="row">
+                @foreach (var item in Model.Branches)
+                {
+                    <div class="col-xl-3 col-lg-3 col-md-6">
+                        <div class="location-item">
+                            <div class="location-item-image">
+                                <img src="~/uploads/branches/@item.Image" alt="">
+                            </div>
+                            <h6>@item.Name</h6>
+                            <div class="location-item-item">
+                                <div class="location-item-location-icon">
+                                    <i class="fa-solid fa-location-dot"></i>
+                                </div>
+                                <div class="location-item-location-content">
+                                    <span>Find us</span>
+                                    <p>@item.Location</p>
+                                </div>
+                            </div>
+                            <div class="location-item-item">
+                                <div class="location-item-location-icon">
+                                    <i class="fa-solid fa-phone"></i>
+                                </div>
+                                <div class="location-item-location-content">
+                                    <span>Call us</span>
+                                    <p>@item.Phone</p>
+                                </div>
+                            </div>
+                            <div class="location-item-item">
+                                <div class="location-item-location-icon">
+                                    <i class="fa-regular fa-envelope"></i>
+                                </div>
+                                <div class="location-item-location-content">
+                                    <span>Mail us</span>
+                                    <p>@item.Mail</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </section>
+</main>

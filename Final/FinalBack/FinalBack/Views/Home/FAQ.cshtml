@@ -1,0 +1,48 @@
+﻿@model HomeViewModel    
+<main>
+        <section id="custom-banner-section-faqs">
+            <div class="page-header">
+                <p class="page-header-text">FAQs</p>
+                <span><a asp-controller="home" asp-action="index"><span>Home</span> / </a>FAQs</span>
+            </div>
+        </section>
+        <section id="faqs-content" style="height:500px">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-6 col-md-12 col-sm-12">
+                        <p class="faqs-content-header">Order and Returns</p>
+                        <div class="accordion">
+                            @foreach (var item in Model.LeftFaqs)
+                            {
+                                <div class="accordionheader" id="acheader1">
+                                    @item.FaqHeader
+                                </div>
+                                <div class="accordionbody">
+                                    <p>
+                                        @item.FaqBody
+                                    </p>
+                                </div>
+                            }
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-md-12 col-sm-12">
+                        <p class="faqs-content-header">Ordering from AYO</p>
+                        <div class="accordion">
+                            @foreach (var item in @Model.RightFaqs)
+                            {
+                                <div class="accordionheader" id="acheader1">
+                                    @item.FaqHeader
+                                </div>
+                                <div class="accordionbody">
+                                    <p>
+                                        @item.FaqBody
+                                    </p>
+                                </div>
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+  

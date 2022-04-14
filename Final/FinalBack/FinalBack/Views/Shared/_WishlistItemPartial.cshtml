@@ -1,0 +1,25 @@
+﻿@model List<WishlistItem>
+<tbody>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td class="image-td">
+                <img src="~/uploads/products/@item.Product.ProductImages.FirstOrDefault(x=>x.ThumbStatus==true)?.Image" alt="" />
+            </td>
+            <td class="product-name-td"> @item.Product.Name</td>
+            @if (item.Product.DiscountPercent > 0)
+            {
+                <td class="product-price-td">$@((item.Product.SalePrice* (1- item.Product.DiscountPercent/100)).ToString("0.00"))</td> 
+            }
+            else
+            {
+                <td class="product-price-td">$@item.Product.SalePrice</td>
+            }
+            <td style="display: flex; align-items: center; justify-content: center;">
+                <a style="line-height: 50px; text-align: center; width: 100px; text-decoration: none; color: white; display: block; background-color: #fcbe00; height: 50px;" class="add-to-basket" asp-controller="shop" asp-action="addbasket" asp-route-id="@item.Product.Id">Add To Card</a>
+            </td>
+            <td class="total-price-td">$@item.Product.SalePrice</td>
+            <td class="remove-td"><a asp-controller="wishlist" asp-action="removewishlist" asp-route-id="@item.Product.Id"><i class="fa-solid fa-xmark"></i></a></td>
+        </tr>
+    }
+</tbody>

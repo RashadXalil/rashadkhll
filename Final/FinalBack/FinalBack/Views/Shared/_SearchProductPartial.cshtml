@@ -1,0 +1,22 @@
+﻿@model List<Product>
+<ul>
+    @foreach (var item in Model)
+	{
+    <li>
+        <div class="row" style="align-items: center;">
+            <div class="col-3">
+                <img style="width:50px;" src="~/uploads/products/@item.ProductImages.FirstOrDefault(x=>x.ThumbStatus==true)?.Image"
+                     alt="">
+            </div>
+            <div class="col-6">
+                <p class="product-name">
+                    <a asp-controller="home" asp-action="productdetail" asp-route-id="@item.Id" style="color:black;text-decoration:none">@item.Brand.Name @item.Name</a>
+                </p>
+            </div>
+            <div class="col-3">
+                <span>$@((item.DiscountPercent>0? (item.SalePrice*(1-item.DiscountPercent/100)):item.SalePrice).ToString("0.00"))</span>
+            </div>
+        </div>
+    </li>
+	}
+</ul>

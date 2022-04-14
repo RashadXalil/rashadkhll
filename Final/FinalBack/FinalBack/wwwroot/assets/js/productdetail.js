@@ -1,0 +1,18 @@
+$(document).ready(function(){
+    $("nav-link-1").click(function(e){
+      console.log("clicked")
+      $(".tab-content-1").show()
+      $(".tab-content-2").hide()
+      $(".tab-content-3").hide()
+    });
+    $("nav-link-2").click(function(e){
+      $(".tab-content-1").hide()
+      $(".tab-content-2").show()
+      $(".tab-content-3").hide()
+    });
+    $("nav-link-3").click(function(e){
+      $(".tab-content-1").css("display","none")
+      $(".tab-content-2").css("display","none")
+      $(".tab-content-3").css("display","block")
+    });
+  });

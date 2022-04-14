@@ -1,0 +1,38 @@
+﻿@model List<BasketItem>
+@{
+    decimal Total = 0;
+    decimal SalePrice = 0;
+}
+@foreach (var item in Model)
+{
+    <tr>
+        <td class="image-td">
+            <img style="width:70px;height70px;object-fit:contain" src="~/uploads/products/@item.Product.ProductImages.FirstOrDefault(x=>x.ThumbStatus==true)?.Image" alt="" />
+        </td>
+        <td class="product-name-td">@item.Product.Name</td>
+        <td class="product-price-td">$@((item.Product.DiscountPercent>0?(item.Product.SalePrice*(1-item.Product.DiscountPercent/100)):item.Product.SalePrice).ToString("0.00")) </td>
+        <td class="counter-td">
+            <div class="number">
+                <a style="text-decoration:none;color:black" asp-route-id="@item.Product.Id" asp-action="RemoveBasket" asp-controller="shop" class="remove-basket">
+                    -
+                    </a>
+                <input type="text" value="@item.Count" />
+                <a style="text-decoration:none;color:black" asp-route-id="@item.Product.Id" asp-action="addbasket" asp-controller="shop" class="remove-basket">
+                    +
+                </a>
+            </div>
+        </td>
+        <td class="total-price-td">
+            $@((item.Product.DiscountPercent>0?(item.Product.SalePrice*(1-item.Product.DiscountPercent/100)*item.Count):item.Product.SalePrice*item.Count).ToString("0.00"))
+        </td>
+        <td class="remove-td">
+
+          <a asp-route-id="@item.Product.Id" asp-action="RemoveBasket" asp-controller="shop" class="remove-basket">
+                        <i style="color:black!important;font-size:16px;line-height:60px" class="fa-solid fa-xmark"></i>
+                    </a>
+        
+        </td>
+    </tr>
+}
+
+

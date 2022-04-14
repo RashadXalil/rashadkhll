@@ -1,0 +1,144 @@
+﻿@model HomeViewModel
+   <main>
+      <section id="custom-banner-section">
+        <div class="page-header">
+          <p class="page-header-text">Blog</p>
+          <span><a asp-controller="home" asp-action="index">Home / </a>Blog</span>
+        </div>
+      </section>
+      <section id="blog-area">
+        <div class="container">
+          <div class="row">
+            <div class="col-xl-8 col-lg-7">
+                <div class="row">
+                    @foreach (var item in Model.Blogs)
+                    {
+                        <div class="col-xl-6">
+                            <div class="blog">
+                                <div class="blog-image">
+                                    <img src="~/uploads/blogs/@item.Image" alt="" />
+                                </div>
+                                <div class="blog-content">
+                                    <div class="blog-header">
+                                        <a asp-controller="blog" asp-action="detail" asp-route-blogId="@item.Id">@item.Title1</a>
+                                    </div>
+                                    <div class="blog-author">
+                                        <p>POSTED BY <a href="#">ADLOP</a></p>
+                                    </div>
+                                    <div class="blog-text">
+                                        <p class="text">
+                                            @item.Desc1
+                                        </p>
+                                    </div>
+                                    <div class="publish-date">
+                                        <button class="publish-date-button">Read More</button>
+                                        <a href="#">@item.CreatedAt</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+                <div class="row">
+                    <div class="pagination-block">
+                        <div class="pagination">
+                            <button value="1"><</button>
+                            @for (int i = 1; i <= ViewBag.TotalPage; i++)
+                            {
+                                <button class="@(i == ViewBag.PageIndex?"active":"")"><a style= "text-decoration:none;color:black" href="@Url.Action("index","blog",new { genderId=ViewBag.catId,page=i})">@i</a></button>
+                            }
+                            <button value="1">></button>
+                        </div>
+                    </div>
+                    <!-- end pagination area -->
+                </div>
+            </div>
+            <div class="col-xl-4 col-lg-5">
+              <div class="blog-area-filter">
+                <div class="blog-area-filter-search">
+                  <div class="search-header">
+                    <p>Search Here</p>
+                  </div>
+                  <div class="search-content">
+                    <input type="text" placeholder="Search your keyboard..." />
+                    <a href="#">
+                      <i class="fa-solid fa-magnifying-glass"></i>
+                    </a>
+                  </div>
+                </div>
+                <div class="blog-area-feeds">
+                  <div class="feeds-header">
+                    <p>Popular Feeds</p>
+                  </div>
+                  <div class="feeds-content">
+                      <ul>
+                          @foreach (var item in Model.PopularBlogs)
+                          {
+                              <li>
+                                  <div class="feed-img">
+                                      <a asp-controller="blog" asp-action="detail" asp-route-BlogId="@item.Id">
+                                          <img src="~/uploads/blogs/@item.Image"
+                                               alt="" />
+                                      </a>
+                                  </div>
+                                  <div class="feed-content">
+                                      <h6>
+                                          <a asp-controller="blog" asp-action="detail" asp-route-BlogId="@item.Id">
+                                              @item.Title1
+                                          </a>
+                                      </h6>
+                                      <span>
+                                          <i class="fa-solid fa-calendar-days"></i>
+                                          @item.CreatedAt
+                                      </span>
+                                  </div>
+                              </li>
+
+                          }
+
+                      </ul>
+                  </div>
+                </div>
+                <div class="blog-area-categories">
+                  <div class="categories-header">
+                    <p>Categories</p>
+                  </div>
+                  <div class="categories-content">
+                      <ul>
+                          @foreach (var item in Model.BlogCategories)
+                          {
+                              <li>
+                                  <a asp-controller="blog" asp-action="index" asp-route-catId="@item.Id">
+                                      <div class="single-category">
+                                          @item.Name
+                                          <span class="category-number">@item.Blogs.Count</span>
+                                      </div>
+                                  </a>
+                              </li>
+                          }
+                      </ul>
+                  </div>
+                </div>
+                <div class="blog-area-sponsor">
+                  <div class="sponsor-header">
+                    <p>Sponsor Adds</p>
+                  </div>
+                  <div class="sponsor-content">
+                    <div class="img-block">
+                      <a href="https://aze.1xbet.com/">
+                        <img
+                        src="https://pbs.twimg.com/media/Eo3cFiUXEAAgumE?format=jpg&name=4096x4096"
+                        alt=""
+                      />
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+  

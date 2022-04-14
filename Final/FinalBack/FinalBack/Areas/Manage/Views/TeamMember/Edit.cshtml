@@ -1,0 +1,66 @@
+﻿@model TeamMember
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col-lg-8 mx-auto">
+            <h1>Edit</h1>
+            <form asp-action="edit" method="post" enctype="multipart/form-data">
+                <div class="form-row">
+                    <div class="form-group col-lg-12">
+                        <label asp-for="Name">Name</label>
+                        <input class="form-control" asp-for="Name" placeholder="Enter Name">
+                        <span class="text-danger" asp-validation-for="Name"></span>
+                    </div>
+                    <div class="form-group col-lg-12">
+                        <label asp-for="Surname">Surname</label>
+                        <input class="form-control" asp-for="Surname" placeholder="Enter Surname">
+                        <span class="text-danger" asp-validation-for="Surname"></span>
+                    </div>
+                    <div class="form-group col-lg-12">
+                        <label asp-for="Position">Position</label>
+                        <input class="form-control" asp-for="Position" placeholder="Enter Position">
+                        <span class="text-danger" asp-validation-for="Position"></span>
+                    </div>
+                    <div class="form-group col-lg-12">
+                        <label asp-for="DribbleURL">Dribble</label>
+                        <input class="form-control" asp-for="DribbleURL" placeholder="Enter Dribble">
+                        <span class="text-danger" asp-validation-for="DribbleURL"></span>
+                    </div>
+                    <div class="form-group col-lg-12">
+                        <label asp-for="FacebookURL">Facebook</label>
+                        <input class="form-control" asp-for="FacebookURL" placeholder="Enter Facebook">
+                        <span class="text-danger" asp-validation-for="FacebookURL"></span>
+                    </div>
+                    <div class="form-group col-lg-12">
+                        <label asp-for="TwitterURl">Twitter</label>
+                        <input class="form-control" asp-for="TwitterURl" placeholder="Enter Twitter">
+                        <span class="text-danger" asp-validation-for="TwitterURl"></span>
+                    </div>
+                    <div class="form-group col-lg-12">
+                        <label asp-for="YoutubeURL">Youtube</label>
+                        <input class="form-control" asp-for="YoutubeURL" placeholder="Enter Youtube">
+                        <span class="text-danger" asp-validation-for="YoutubeURL"></span>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label asp-for="ImageFile">ImageFile</label>
+                        <input class="form-control" asp-for="ImageFile" placeholder="Select image">
+                        <span class="text-danger" asp-validation-for="ImageFile"></span>
+                        @if (Model.Image != null)
+                        {
+                            <div class="img-box" style="position:relative;display:inline-block ;margin-top:20px">
+                                <input type="hidden" name="Image" value="@Model.Image" />
+                                <img width="100" src="~/uploads/teammembers/@Model.Image" />
+                            </div>
+                        }
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+        </div>
+    </div>
+</div>

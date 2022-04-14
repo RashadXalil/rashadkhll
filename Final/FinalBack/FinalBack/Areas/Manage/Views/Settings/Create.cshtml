@@ -1,0 +1,24 @@
+﻿@model Settings
+@{
+    ViewData["Title"] = "Create";
+}
+<div class="container">
+    <div class="row">
+        <div class="col-lg-8 mx-auto">
+            <h1>Create</h1>
+            <form asp-action="create" method="post" enctype="multipart/form-data">
+                <div class="form-group">
+                    <label asp-for="Key">Key</label>
+                    <input class="form-control" asp-for="Key" placeholder="Key">
+                    <span class="text-danger" asp-validation-for="Key"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Value">Value</label>
+                    <input class="form-control" asp-for="Value" placeholder="Value">
+                    <span class="text-danger" asp-validation-for="Value"></span>
+                </div>
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+        </div>
+    </div>
+</div>

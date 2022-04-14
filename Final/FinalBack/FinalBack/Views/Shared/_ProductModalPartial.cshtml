@@ -1,0 +1,81 @@
+﻿@model Product
+@{
+        int counter = 0;
+        int thumbcounter = 0;    
+}
+<div class="modal-dialog modal-lg">
+    <div class="modal-content">
+        <div class="row">
+            <div class="col-lg-5" style="margin-top:50px">
+                @foreach (var item in Model.ProductImages)
+                {
+                <div class="image-block image-block-@(thumbcounter++)" style="@(thumbcounter == 1 ? "display:block;" : "display:none;")">
+                    <img style="width:301px;height:241px;object-fit:contain" src="~/uploads/products/@item.Image" alt="">
+                </div>
+                }
+                <div class="row">
+                    <ul class="product-images" style="margin-top:50px">
+                        @foreach (var item in Model.ProductImages)
+                        {
+                            <li class="product-image-item">
+                                <button style="border:1px solid #fcbe00" class="product-image-item-@(counter++)">
+                                    <img style="width:92px;height:62px;object-fit:contain;padding:10px" src="~/uploads/products/@item.Image" alt="">
+                                </button>
+                            </li>
+                        }
+                    </ul>
+                </div>
+            </div>
+            <div class="col-lg-7">
+                <div class="custom-modal-header">
+                    <h6>@Model.Brand.Name @Model.Name</h6>
+                </div>
+                <div class="custom-modal-rate">
+                    @for (int i = 1; i <= 5; i++)
+                    {
+                        <i class="@(Model.Rate>= i ? "fas" : "far") fa-star"></i>
+                    }
+                </div>
+                <div class="custom-modal-price">
+                    @if (Model.DiscountPercent > 0)
+                    {
+                        <div class="price-box">
+                        </div>
+                        <span>$@((Model.SalePrice* (1- Model.DiscountPercent/100)).ToString("0.00")) <del>@Model.SalePrice</del></span>
+                    }
+                    else
+                    {
+                        <span>$@Model.SalePrice</span>
+                    }
+                </div>
+                <ul class="custom-modal-features">
+                    <li>
+                        <p>Category: <span style="color:#fcbe00;cursor:pointer">@Model.SubCategory.Category.Name</span></p>
+                    </li>
+                    <li>
+                        <p>Sub Category: <span style="color:#fcbe00;cursor:pointer">@Model.SubCategory.Name</span></p>
+                    </li>
+                    <li>
+                        <p>RAM: <span style="color:#fcbe00;cursor:pointer">@Model.Ram GB</span></p>
+                    </li>
+                    <li>
+                        <p>Memory: <span style="color:#fcbe00;cursor:pointer">@Model.Memory GB</span></p>
+                    </li>
+                    <li>
+                        <p>Brand: <span style="color:#fcbe00;cursor:pointer">@Model.Brand.Name</span></p>
+                    </li>
+                    <li>
+                        <p>Color: <span style="color:#fcbe00;cursor:pointer">@Model.Color.Name</span></p>
+                    </li>
+                    <li>
+                        <p>Additional Information : <span style="font-size:14px;color:#666">@Model.Desc</span></p>
+                    </li>
+                </ul>
+                <div class="custom-modal-buttons">
+                    <a asp-controller="home" asp-action="productdetail" asp-route-id="@Model.Id">Details</a>
+                    <a class="add-to-basket" asp-action="addbasket" asp-controller="shop" asp-route-id="@Model.Id">Add to Basket</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

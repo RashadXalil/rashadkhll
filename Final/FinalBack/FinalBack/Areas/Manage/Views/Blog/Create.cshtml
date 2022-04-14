@@ -1,0 +1,65 @@
+﻿@model Blog
+@{
+    ViewData["Title"] = "Create";
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col-lg-8 mx-auto">
+            <h1>Create</h1>
+            <form asp-action="create" method="post" enctype="multipart/form-data">
+                <div class="form-row">
+                    <div class="form-group col-lg-12">
+                        <label asp-for="Title1">Title-1</label>
+                        <input class="form-control" asp-for="Title1" placeholder="Enter Title-1">
+                        <span class="text-danger" asp-validation-for="Title1"></span>
+                    </div>
+                    <div class="form-group col-lg-12">
+                        <label asp-for="Title2">Desc</label>
+                        <input class="form-control" asp-for="Title2" placeholder="Enter Title-2">
+                        <span class="text-danger" asp-validation-for="Title2"></span>
+                    </div>
+                    <div class="form-group col-lg-12">
+                        <label asp-for="Desc1">Desc-1</label>
+                        <input class="form-control" asp-for="Desc1" placeholder="Enter Desc-1">
+                        <span class="text-danger" asp-validation-for="Desc1"></span>
+                    </div>
+                    <div class="form-group col-lg-12">
+                        <label asp-for="Desc2">Desc-2</label>
+                        <input class="form-control" asp-for="Desc2" placeholder="Enter Desc-2">
+                        <span class="text-danger" asp-validation-for="Desc2"></span>
+                    </div>
+                    <div class="form-group col-lg-12">
+                        <label asp-for="Desc3">Desc-3</label>
+                        <input class="form-control" asp-for="Desc3" placeholder="Enter Desc-3">
+                        <span class="text-danger" asp-validation-for="Desc3"></span>
+                    </div>
+                    <div class="form-group col-lg-4">
+                        <label asp-for="BlogCategoryId">Categories</label>
+                        <select class="form-control" asp-for="BlogCategoryId" asp-items="@new SelectList(ViewBag.BlogCategories,nameof(BlogCategory.Id),nameof(BlogCategory.Name))">
+                        </select>
+                    </div>
+                    <div class="form-check col-lg-6">
+                        <div class="isavaiablediv" style="margin:60px">
+                            <input class="form-check-input" type="checkbox" asp-for="IsPopular">
+                            <label class="form-check-label" asp-for="IsPopular">
+                                Is Popular
+                            </label>
+                            <span class="text-danger" asp-validation-for="IsPopular"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-lg-6">
+                        <label asp-for="ImageFile">PosterFile</label>
+                        <input class="form-control" asp-for="ImageFile" placeholder="Select image">
+                        <span class="text-danger" asp-validation-for="ImageFile"></span>
+                    </div>
+                </div>
+
+
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,91 @@
+﻿@model CheckOutViewModel
+@{
+    ViewData["Title"] = "Checkout";
+}
+<main>
+    <section id="custom-banner-section-checkout">
+        <div class="page-header">
+            <p class="page-header-text">Checkout</p>
+            <span><a asp-controller="home" asp-action="index">Home / </a>Checkout</span>
+        </div>
+    </section>
+    <section id="checkout-section">
+        <div class="container">
+                <div class="row">
+                    <div class="col-lg-6">
+                        @Html.Partial("_CheckoutFormPartial", Model.Order)
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="your-order mb-30">
+                            <h3>Your order</h3>
+                            <div class="your-order-table">
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <td>Product</td>
+                                            <td>Total</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach (var item in Model.Basket.BasketProducts)
+                                        {
+                                            <tr class="card-item">
+                                                <td class="product-name">
+                                                    @item.Product.Brand.Name @item.Product.Name
+                                                    <strong> * @item.Count</strong>
+                                                </td>
+                                                <td class="product-total">$@((item.Product.DiscountPercent>0? (item.Product.SalePrice*(1-item.Product.DiscountPercent/100))*item.Count :item.Product.SalePrice*item.Count).ToString("0.00"))</td>
+                                            </tr>
+                                        }
+                                    </tbody>
+                                    <tfoot>
+                                        <tr>
+                                            <td>Order Total</td>
+                                            <td>$@Model.Basket.TotalPrice.ToString("0.00")</td>
+                                        </tr>
+                                    </tfoot>
+                                </table>
+                            </div>
+                            <div class="payment-method">
+                                <div class="accordion">
+                                    <div class="accordionheader" id="acheader1">
+                                        Direct Bank Transfer
+                                    </div>
+                                    <div class="accordionbody" style="display: block">
+                                        <p>
+                                            Make your payment directly into our bank account.
+                                            Please use your Order ID as the payment reference.
+                                            Your order won’t be shipped until the funds have
+                                            cleared in our account.
+                                        </p>
+                                    </div>
+                                    <div class="accordionheader" id="acheader2">
+                                        Cheque Payment
+                                    </div>
+                                    <div class="accordionbody">
+                                        <p>
+                                            Please send your cheque to Store Name, Store Street,
+                                            Store Town, Store State / County, Store Postcode.
+                                        </p>
+                                    </div>
+                                    <div class="accordionheader" id="acheader3">
+                                        PayPal
+                                    </div>
+                                    <div class="accordionbody">
+                                        <p>
+                                            Pay via PayPal; you can pay with your credit card if you don’t have a PayPal account.
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="order-button-payment mt-20">
+                                    <button type="submit" form="order-form" class="tp-btn-h1">
+                                        Place order
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+        </div>
+    </section>
+</main>

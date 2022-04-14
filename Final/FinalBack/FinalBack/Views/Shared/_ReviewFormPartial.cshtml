@@ -1,0 +1,54 @@
+﻿@model Review
+<form asp-action="review" asp-controller="home" method="post" class="review-form">
+    <input type="hidden" value="@Model.ProductId" name="productId" />
+    <div class="comment-rating">
+        <span>Overall ratings</span>
+        <div class="form-group row">
+            <div class="col">
+                <label class="col-form-label"><span class="text-danger">*</span> Rating</label>
+                &nbsp;&nbsp;&nbsp; Bad&nbsp;
+                <input type="radio" value="1" asp-for="Rate">
+                &nbsp;
+                <input type="radio" value="2" asp-for="Rate">
+                &nbsp;
+                <input type="radio" value="3" asp-for="Rate">
+                &nbsp;
+                <input type="radio" value="4" asp-for="Rate">
+                &nbsp;
+                <input type="radio" value="5" asp-for="Rate" checked>
+                &nbsp;Good
+            </div>
+        </div>
+    </div>
+    <div class="comment-input-block">
+        <div class="row">
+            <div class="col-xxl-6 col-xl-6">
+                <div class="comment-input">
+                    <input asp-for="@Model.AppUser.Name" type="text" placeholder="Your Name" for="name">
+                </div>
+            </div>
+            <div class="col-xxl-6 col-xl-6">
+                <div class="comment-input">
+                    <input asp-for="@Model.AppUser.Email" type="email" placeholder="Your Email" for="email">
+                </div>
+            </div>
+            <div class="col-xxl-12">
+                <div class="comment-input">
+                    <textarea required asp-for="Text" cols="30" rows="10"></textarea>
+                    <span class="text-danger" asp-validation-for="Text"></span>
+                </div>
+            </div>
+            <div class="col-xxl-12">
+                <div class="form-check">
+                    <input type="checkbox" class="form-check-input" id="rememberme">
+                    <label for="rememberme" class="form-check-label">Save my name, email, and website in this browser for the next time I comment.</label>
+                </div>
+            </div>
+            <div class="col-xxl-12">
+                <div class="comment-submit">
+                    <button type="submit">SUBMIT</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>

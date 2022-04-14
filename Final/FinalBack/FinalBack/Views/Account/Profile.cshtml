@@ -1,0 +1,126 @@
+﻿@model MemberProfileViewModel
+@{
+    ViewData["Title"] = "Profile";
+    int orderCounter = 0;
+    int orderItemCounter = 0;
+}
+<main>
+    <section id="custom-banner-section">
+        <div class="page-header">
+            <p class="page-header-text">My Account</p>
+            <span><a href="index.html">Home / </a>My Account</span>
+        </div>
+    </section>
+    <section id="my-account-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-4 col-lg-4 col-12">
+                    <div class="my-account-nav-block">
+                        <ul class="my-account-nav-links">
+                            <li>
+                                <a href="#" class="dashboard-link">
+                                    <p>Dashboard</p>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" class="orders-link">
+                                    <p>Orders</p>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" class="personal-link">
+                                    <p>Personal Data</p>
+                                </a>
+                            </li>
+                            <li>
+                                <a asp-controller="account" asp-action="logout" class="logout-link">
+                                    <p>Log Out</p>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-xl-8 col-lg-8 col-12">
+                    <div class="my-account-bodies">
+                        <div style="margin-top:100px" class="dashboard-body">
+                            <div class="dashboard-header">
+                                <h3>Welcome @Model.Member.FirstName.ToUpper() @Model.Member.Surname.ToUpper() !</h3>
+                                <p>
+                                    Lorem ipsum dolor, sit amet consectetur adipisicing elit. Voluptatibus
+                                    repellendus, hic fuga dicta odit dolor. Repellendus laudantium magni illum,
+                                    corporis debitis dolorem eius alias officia? Veritatis eveniet at alias culpa
+                                    dolorem autem maiores voluptatum earum eum, iure illum pariatur itaque, in, fuga
+                                    sequi obcaecati recusandae inventore. Obcaecati officia voluptates cum.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="orders-body">
+                            <table class="table table-bordered">
+                                <thead class="thead-light">
+                                    <tr>
+                                        <th></th>
+                                        <th>Items count</th>
+                                        <th>Phone </th>
+                                        <th>Total</th>
+                                        <th>Date</th>
+                                        <th>Status</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var order in Model.Orders)
+                                    {
+                                        orderItemCounter = 0;
+                                        orderCounter++;
+                                        <tr data-toggle="collapse" data-target="#demo-@order.Id" class="accordion-toggle">
+                                            <td>@orderCounter</td>
+                                            <td>@order.OrderItems.Count</td>
+                                            <td>@order.PhoneNumber</td>
+                                            <td>$@order.TotalPrice</td>
+                                            <td>@order.CreatedAt.ToString("dd-MM-yyyy HH:mm")</td>
+                                            <td>@order.Status</td>
+                                        </tr>
+
+                                        <tr>
+                                            <td colspan="12" class="hiddenRow">
+                                                <div class="accordian-body collapse" id="demo-@order.Id">
+                                                    <table class="table table-striped">
+                                                        <thead>
+                                                            <tr class="info">
+                                                                <th></th>
+                                                                <th>Product Name</th>
+                                                                <th>Count</th>
+                                                                <th>Unit price</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+
+                                                            @foreach (var orderItem in order.OrderItems)
+                                                            {
+                                                                orderItemCounter++;
+                                                                <tr data-toggle="collapse" class="accordion-toggle" data-target="#demo10">
+                                                                    <td>@orderItemCounter</td>
+                                                                    <td>@orderItem.Product.Brand.Name @orderItem.Product.Name</td>
+                                                                    <td>@orderItem.Count </td>
+                                                                    <td>$@orderItem.DiscountedPrice</td>
+                                                                </tr>
+                                                            }
+                                                        </tbody>
+                                                    </table>
+
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    }
+
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="personal-body">
+                            @Html.Partial("_MemberUpdateFormPartial", Model.Member)
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>       

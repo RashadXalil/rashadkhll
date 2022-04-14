@@ -1,0 +1,86 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Rubik", sans-serif;
+}
+main{
+
+    #custom-banner-section-login{
+        width: 100%;
+        height: 400px;
+        margin-bottom: 40px;
+        background-image: url(https://themepure.net/template/dukamarket/dukamarket/assets/img/banner/page-banner-3.jpg);
+        background-position: center;
+        background-repeat: no-repeat;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        .page-header{
+            color: white;
+            text-align: center;
+            .page-header-text{
+                font-size: 60px;
+            }
+            span{
+                a{
+                    text-decoration: none;
+                    color: #666;
+                }
+            }
+        }
+    }
+    #login-section{
+
+
+        .section-title{
+            font-size: 20px;
+            margin-bottom: 25px;
+        }
+        label{
+            margin-bottom: 2px;
+            font-size: 14px;
+            line-height: 24px;
+            color: #222;
+            span{
+                color: #CC1414;
+                display: inline-block;
+            }
+        }
+        .form-input{
+            width: 100%;
+            height: 45px;
+            border: 1px solid #e5e5e5;
+            color: #222;
+            padding: 0 20px;
+            margin-bottom: 20px;
+            outline: none;
+            transition: 0.3s linear;
+        }
+        a{
+            color: #0068c9;
+            font-size: 14px;
+            text-decoration: none;
+            float: right;
+        }
+        button{
+            width: 100%;
+            font-weight: 600;
+            height: 45px;
+            border-radius: 20px;
+            background-color:#fcbe00;
+            color: black;
+            font-size: 14px;
+            text-align: center;
+            border: none;
+            margin-bottom: 20px;
+            margin-top: 20px;
+            transition: 0.3s linear;
+            &:hover{
+                background-color: #fff;
+                color: #fcbe00;
+                border: 1px solid #fcbe00;
+            }
+        }
+    }
+}

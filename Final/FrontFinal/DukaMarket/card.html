@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="assets/css/style.css" />
+    <script
+      src="https://kit.fontawesome.com/2545e17170.js"
+      crossorigin="anonymous"
+    ></script>
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/swiper@8/swiper-bundle.min.css"
+    />
+    <link rel="stylesheet" type="text/css" href="slick/slick.css" />
+    <link rel="stylesheet" type="text/css" href="slick/slick-theme.css" />
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+    <title>Document</title>
+  </head>
+  <body>
+    <!-- Header Start -->
+    <header>
+      <!-- Navbar Start -->
+      <nav>
+        <div class="custom-navbar">
+          <div class="header-top">
+            <div class="container">
+              <div class="row">
+                <div class="col-lg-6">
+                  <ul class="header-top-left-items">
+                    <li class="header-top-left-item">
+                      <p class="header-top-left-item-inner">
+                        Language: English
+                      </p>
+                    </li>
+                    <li class="header-top-left-item">
+                      <p class="header-top-left-item-inner">Currency: USD</p>
+                    </li>
+                    <li class="header-top-left-item header-top-left-item-last">
+                      <p class="header-top-left-item-inner">
+                        Need Help? +001123 456 789
+                      </p>
+                    </li>
+                  </ul>
+                </div>
+                <div class="col-lg-6">
+                  <ul class="header-top-right-items">
+                    <li class="header-top-right-item">
+                      <a href="aboutus.html" class="header-top-right-links">About Us</a>
+                    </li>
+                    <li class="header-top-right-item">
+                      <a href="#" class="header-top-right-links"
+                        >Order Tracking</a
+                      >
+                    </li>
+                    <li class="header-top-right-item">
+                      <a href="contactus.html" class="header-top-right-links">Contact Us</a>
+                    </li>
+                    <li class="header-top-right-item">
+                      <a href="faqs.html" class="header-top-right-links">FAQs</a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="header-mid">
+            <div class="container">
+              <div class="row">
+                <div class="col-xl-3 col-lg-2 col-md-4 col-sm-4">
+                  <div class="logo">
+                    <a href="index.html"><img src="assets/img/logos/headerlogo.svg" alt="" /></a>
+                  </div>
+                </div>
+                <div
+                  class="col-xl-5 col-lg-4 d-none d-lg-block header-search-div"
+                >
+                  <div class="header-search">
+                    <form action="#">
+                      <div class="header-search-box">
+                        <input
+                          class="search-input search-input-2"
+                          type="text"
+                          placeholder="I'm shopping for..."
+                        />
+                        <button class="header-search-button" type="submit">
+                          <i class="fa-solid fa-magnifying-glass"></i>
+                        </button>
+                      </div>
+                      <div class="header-search-category">
+                        <select>
+                          <option>All Categories</option>
+                          <option>Best Seller Products</option>
+                          <option>Top 10 Offers</option>
+                          <option>New Arrivals</option>
+                          <option>Phones &amp; Tablets</option>
+                          <option>Electronics &amp; Digital</option>
+                          <option>Fashion &amp; Clothings</option>
+                          <option>Jewelry &amp; Watches</option>
+                          <option>Health &amp; Beauty</option>
+                          <option>Sound &amp; Speakers</option>
+                          <option>TV &amp; Audio</option>
+                          <option>Computers</option>
+                        </select>
+                      </div>
+                    </form>
+                  </div>
+                </div>
+                <div class="col-xl-4 col-lg-6 col-md-8 col-sm-8">
+                  <div class="header-mid-right-items">
+                    <div class="block-user">
+                      <a href="login.html" class="icon-link icon-link-2">
+                        <i class="fa-solid fa-user"></i>
+                        <span class="header-mid-right-item-text">
+                          <span class="header-mid-right-item-text-sub">
+                            Login
+                          </span>
+                          My Account
+                        </span>
+                      </a>
+                    </div>
+                    <div class="block-user">
+                      <a href="wishlist.html" class="icon-link icon-link-2">
+                        <i class="fa-regular fa-heart"></i>
+                        <span class="header-mid-right-item-text">
+                          <span class="header-mid-right-item-text-sub">
+                            Favorite
+                          </span>
+                          My Wishlist
+                        </span>
+                      </a>
+                    </div>
+                    <div class="block-user basket">
+                      <a href="card.html" class="icon-link icon-link-2">
+                        <i class="fa-solid fa-basket-shopping"></i>
+                        <span class="header-mid-right-item-text">
+                          <span class="header-mid-right-item-text-sub">
+                            Your Card
+                          </span>
+                          $00.00
+                        </span>
+                      </a>
+                      <div class="basket-block">
+                        <div class="basket-block-header">
+                          Your Card <span>(1 item in Card)</span>
+                        </div>
+                        <div class="basket-block-basket-items">
+                          <div class="basket-block-basket-item">
+                            <div class="row">
+                              <div class="col-3 img-div">
+                                <div class="img-div">
+                                  <img
+                                    src="assets/img/home/product1.jpg"
+                                    alt=""
+                                  />
+                                </div>
+                              </div>
+                              <div class="col-7">
+                                <div class="product-name">
+                                  Samsung C49J89: £875, Debenhams Plus
+                                </div>
+                                <div class="product-price">$255.00</div>
+                              </div>
+                              <div class="col-2 delete">
+                                <i class="fa-solid fa-xmark"></i>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="basket-block-basket-item">
+                            <div class="row">
+                              <div class="col-3 img-div">
+                                <div class="img-div">
+                                  <img
+                                    src="assets/img/home/product1.jpg"
+                                    alt=""
+                                  />
+                                </div>
+                              </div>
+                              <div class="col-7">
+                                <div class="product-name">
+                                  Samsung C49J89: £875, Debenhams Plus
+                                </div>
+                                <div class="product-price">$255.00</div>
+                              </div>
+                              <div class="col-2 delete">
+                                <i class="fa-solid fa-xmark"></i>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="total-price">
+                          <div class="total-price-text">Subtotal :</div>
+                          <div class="total-price-price">$255</div>
+                        </div>
+                        <div class="basket-buttons">
+                          <a href="card.html" class="view-card">View Card</a>
+                          <a href="checkout.html" class="check-out">Check Out</a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="header-bottom">
+            <div class="container">
+              <div class="row">
+                <div class="col-lg-3 col-md-6 col-3 header-bottom-left-item">
+                  <div class="btn-group">
+                    <button
+                      type="button"
+                      class="btn btn-secondary"
+                      data-toggle="dropdown"
+                      aria-haspopup="true"
+                      aria-expanded="false"
+                    >
+                      <i class="fa-solid fa-bars"></i>
+                      SHOP BY DEPARTMENT
+                    </button>
+                    <div
+                      class="dropdown-menu dropdown-menu-right header-bottom-dropdown"
+                    >
+                      <button class="dropdown-item" type="button">
+                        All Categories
+                      </button>
+                      <button class="dropdown-item" type="button">
+                        Best Seller Products
+                      </button>
+                      <button class="dropdown-item" type="button">
+                        Tv & Audio
+                      </button>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-lg-6 col-md-6 col-3">
+                  <div class="mobile-menu">
+                    <i class="fa-solid fa-bars mobile-menu-icon-1"></i>
+                    <i class="fa-solid fa-xmark mobile-menu-icon-2"></i>
+                  </div>
+                  <ul class="header-bottom-links">
+                    <a href="index.html">Home</a>
+                    <a href="aboutus.html">About Us</a>
+                    <a href="shop.html">Shop</a>
+                    <a href="blog.html">Blog</a>
+                    <a href="contactus.html">Contact Us</a>
+                  </ul>
+                </div>
+                <div class="col-lg-3 col-md-6 col-9">
+                  <p class="header-bottom-right-item">
+                    Spend $120 more and get free shipping!
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="mobile-menu-block">
+          <div class="row">
+            <div class="col-12">
+              <div class="mobile-menu-logo">
+                <img src="assets/img/home/logomobile.png" alt="" />
+              </div>
+              <div class="col-12">
+                <div class="mobile-menu-search">
+                  <input
+                    type="text"
+                    placeholder="What are you searching for?"
+                  />
+                  <button type="submit">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                  </button>
+                </div>
+                <div class="col-12">
+                  <div class="mobile-menu-categories">
+                    <div class="accordion">
+                      <div class="accordionheader" id="acheader1">
+                        <a href="#"
+                          >All Categories <i class="fa-solid fa-plus"></i
+                        ></a>
+                      </div>
+                      <div class="accordionbody">
+                        <a href="#"> Tablet & Mobile </a>
+                      </div>
+                      <div class="accordionheader" id="acheader2">
+                        <a href="">
+                          Phone And Electronics <i class="fa-solid fa-plus"></i
+                        ></a>
+                      </div>
+                      <div class="accordionbody">
+                        <a href="#">Best Seller Hot</a>
+                      </div>
+                      <div class="mobile-menu-link">
+                        <a href="#">Top 10 Offer Nows</a>
+                      </div>
+                      <div class="accordionheader" id="acheader2">
+                        <a href="#"
+                          >Phone And Electronics <i class="fa-solid fa-plus"></i
+                        ></a>
+                      </div>
+                      <div class="accordionbody">
+                        <a href="#">Best Seller Hot</a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </nav>
+      <!-- Navbar End-->
+    </header>
+    <!-- Header End -->
+    <!-- ------------ -->
+    <!-- Main Start  -->
+    <main>
+      <section id="custom-banner-section">
+        <div class="page-header">
+          <p class="page-header-text">Your Card</p>
+          <span><a href="index.html">Home / </a>Card</span>
+        </div>
+      </section>
+      <section id="card-products-section">
+        <div class="container">
+          <div class="row">
+            <div class="col-12">
+              <table class="table table-bordered">
+                <thead>
+                  <tr>
+                    <th scope="col" class="image-th">Images</th>
+                    <th scope="col" class="product-name-th">Product</th>
+                    <th scope="col" class="product-price-th">Unit Price</th>
+                    <th scope="col" class="button-th">Quantity</th>
+                    <th scope="col" class="total-price-th">Total</th>
+                    <th scope="col" class="remove-th">Remove</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="image-td">
+                      <img src="assets/img/wishlist/wlp1.jpg" alt="" />
+                    </td>
+                    <td class="product-name-td">Light Jacket</td>
+                    <td class="product-price-td">$130.00</td>
+                    <td class="counter-td">
+                      <div class="number">
+                        <span class="minus">-</span>
+                        <input type="text" value="1" />
+                        <span class="plus">+</span>
+                      </div>
+                    </td>
+                    <td class="total-price-td">$130.00</td>
+                    <td class="remove-td"><i class="fa-solid fa-xmark"></i></td>
+                  </tr>
+                  <tr>
+                    <td class="image-td">
+                      <img src="assets/img/wishlist/wlp2.jpg" alt="" />
+                    </td>
+                    <td class="product-name-td">Light Jacket</td>
+                    <td class="product-price-td">$130.00</td>
+                    <td class="counter-td">
+                      <div class="number">
+                        <span class="minus">-</span>
+                        <input type="text" value="1" />
+                        <span class="plus">+</span>
+                      </div>
+                    </td>
+                    <td class="total-price-td">$130.00</td>
+                    <td class="remove-td"><i class="fa-solid fa-xmark"></i></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <div class="row">
+              <div class="col-8">
+                  <div class="coupon-enter">
+                    <input type="text" class="coupon-input" placeholder="Coupon code">
+                    <button class="apply-coupon">Apply Coupon</button>
+                  </div>
+              </div>
+              <div class="col-4">
+                 <div class="update-card-button-div">
+                    <button type="submit" class="update-card">Update Card</button>
+                 </div>
+              </div>
+          </div>
+          <div class="row">
+              <div class="col-7"></div>
+              <div class="col-5">
+                  <div class="card-total-div">
+                      <div class="card-total-header">
+                          Card Totals
+                      </div>
+                      <div class="card-total-item">
+                          <p class="card-total-text">Subtotal</p>
+                          <p class="card-total-price">$250.00</p>
+                      </div>
+                      <div class="card-total-item">
+                        <p class="card-total-text">Total</p>
+                        <p class="card-total-price">$250.00</p>
+                    </div>
+                    <button type="submit">Proceed To Checkout</button>
+                  </div>
+              </div>
+          </div>
+        </div>
+      </section>
+    </main>
+    <!-- Main End -->
+    <!-- ------------- -->
+    <!-- Footer Start -->
+    <footer>
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-4">
+            <p class="footer-top-left-header">Download App</p>
+            <p class="footer-top-left-context">
+              DukaMarket App is now available on App Store & Google Play. Get it
+              now.
+            </p>
+            <img
+              src="assets/img/footer/androidfooterimg.png"
+              class="androidimg"
+              alt="android download image"
+            />
+            <img
+              src="assets/img/footer/iosfooterimage.png"
+              class="iosimg"
+              alt="ios download image"
+            />
+            <div class="social-medias">
+              <div class="social-media" id="facebook">
+                <i class="fa-brands fa-facebook-f"></i>
+              </div>
+              <div class="social-media" id="twitter">
+                <i class="fa-brands fa-twitter"></i>
+              </div>
+              <div class="social-media" id="youtube">
+                <i class="fa-brands fa-youtube"></i>
+              </div>
+              <div class="social-media" id="linkedin">
+                <i class="fa-brands fa-linkedin-in"></i>
+              </div>
+              <div class="social-media" id="rss">
+                <i class="fa-solid fa-rss"></i>
+              </div>
+              <div class="social-media" id="dribble">
+                <i class="fa-brands fa-dribbble"></i>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-3">
+            <div class="footer-mid-1">
+              <p class="footer-header">My Account</p>
+              <ul class="footer-mid-1-links">
+                <li class="footer-mid-1-link">Product Support</li>
+                <li class="footer-mid-1-link">Checkout</li>
+                <li class="footer-mid-1-link">Shopping Card</li>
+                <li class="footer-mid-1-link">Wishlist</li>
+                <li class="footer-mid-1-link">Terms & Conditions &</li>
+                <li class="footer-mid-1-link">Redeem Voucher</li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-lg-3">
+            <div class="footer-mid-1">
+              <p class="footer-header">Customer Care</p>
+              <ul class="footer-mid-1-links">
+                <li class="footer-mid-1-link">New Customer</li>
+                <li class="footer-mid-1-link">How to use Account</li>
+                <li class="footer-mid-1-link">Placing Order</li>
+                <li class="footer-mid-1-link">Payment Methods</li>
+                <li class="footer-mid-1-link">Delivery & Dispatch</li>
+                <li class="footer-mid-1-link">Problems with Order</li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-lg-2">
+            <div class="footer-mid-1">
+              <p class="footer-header">Customer Service</p>
+              <ul class="footer-mid-1-links">
+                <li class="footer-mid-1-link">Help Center</li>
+                <li class="footer-mid-1-link">Contact Us</li>
+                <li class="footer-mid-1-link">Report Abuse</li>
+                <li class="footer-mid-1-link">Submit a Dispute</li>
+                <li class="footer-mid-1-link">Policies & Rules</li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-lg-4">
+            <div class="footer-mid">
+              <h3 class="footer-mid-header">Sign Up To Newsletter</h3>
+              <p class="footer-mid-text">
+                Join 60.000+ subscribers and get a new discount coupon on every
+                Saturday
+              </p>
+              <form action="#">
+                <input
+                  type="email"
+                  class="footer-mid-input"
+                  placeholder="Enter your email ..."
+                />
+                <button class="footer-mid-button">SUBSCRIBE</button>
+              </form>
+              <p class="footer-mid-text">
+                By providing your email adress ,you agree to our
+                <a href="#" class="footer-mid-a">Privicy Policy</a> and
+                <a class="footer-mid-a" href="#">Terms of Service</a>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="footer-2">
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-12">
+              <p class="footer-2-links">
+                <a href="#">About Us</a>
+                <a href="#">Delivery & Return</a>
+                <a href="#">Privicy Policy</a>
+                <a href="#">Help</a>
+                <a href="#">Order Tracking</a>
+                <a href="#">Contact Us</a>
+                <a href="#">Help</a>
+                <a href="#">Help</a>
+              </p>
+            </div>
+            <div class="col-lg-12 col-md-12 col-sm-12 col-12 payment">
+              <img src="assets/img/footer/payment.png" alt="" />
+            </div>
+            <div class="col-lg-12">
+              <p class="footer-2-bottom-text">
+                Copyright © <span>DukaMarket.</span> All Rights Reserved.
+                Powered by <a href="#">Theme_Pure.</a>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+    <!-- Footer End -->
+  </body>
+
+  <script
+    src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+    crossorigin="anonymous"
+  ></script>
+  <script
+    src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js"
+    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+    crossorigin="anonymous"
+
+  ></script>
+  <script
+    src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js"
+    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+    crossorigin="anonymous"
+  ></script>
+  <script
+    src="https://code.jquery.com/jquery-3.6.0.js"
+    integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
+    crossorigin="anonymous"
+  ></script>
+  <script
+    type="text/javascript"
+    src="//code.jquery.com/jquery-1.11.0.min.js"
+  ></script>
+  <script
+    type="text/javascript"
+    src="//code.jquery.com/jquery-migrate-1.2.1.min.js"
+  ></script>
+  <script type="text/javascript" src="slick/slick.min.js"></script>
+  <script src="https://unpkg.com/swiper@8/swiper-bundle.min.js"></script>
+  <script src="assets/js/script.js"></script>
+</html>

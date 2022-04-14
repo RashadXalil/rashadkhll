@@ -1,0 +1,30 @@
+﻿@model Review
+<form asp-action="review" asp-controller="home" method="post" class="review-form">
+    <input type="hidden" value="@Model.ProductId" name="productId"  />
+    <div class="form-group row">
+        <div class="col">
+            <label  asp-for="Text"class="col-form-label"><span class="text-danger">*</span> Your Review</label>
+            <textarea class="form-control" required asp-for="Text"></textarea>
+            <div class="help-block pt-10"><span class="text-danger">Note:</span> HTML is not translated!</div>
+        </div>
+    </div>
+    <div class="form-group row">
+        <div class="col">
+            <label class="col-form-label"><span class="text-danger">*</span> Rating</label>
+            &nbsp;&nbsp;&nbsp; Bad&nbsp;
+            <input type="radio" value="1" asp-for="Rate">
+            &nbsp;
+            <input type="radio" value="2" asp-for="Rate">
+            &nbsp;
+            <input type="radio" value="3" asp-for="Rate">
+            &nbsp;
+            <input type="radio" value="4" asp-for="Rate">
+            &nbsp;
+            <input type="radio" value="5" asp-for="Rate" checked>
+            &nbsp;Good
+        </div>
+    </div>
+    <div class="buttons">
+        <button class="sqr-btn" type="submit">Continue</button>
+    </div>
+</form> <!-- end of review-form -->

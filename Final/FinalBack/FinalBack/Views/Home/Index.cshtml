@@ -1,0 +1,559 @@
+﻿@model HomeViewModel
+<main>
+    <section id="hero-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-7 col-md-12 col-sm-12 custom-slider">
+                    <!-- Slider main container -->
+                    <div class="swiper">
+                        <!-- Additional required wrapper -->
+                        <div class="swiper-wrapper">
+                            <!-- Slides -->
+                            @foreach (var item in Model.Sliders)
+                            {
+                                <div class="single-slide swiper-slide slide-1">
+                                    <img style="object-fit:cover" src="/uploads/sliders/@item.Image" alt="" />
+                                    <div class="single-slide-content">
+                                        <div class="single-slide-header">
+                                            <p class="single-slide-text-head">
+                                                @item.Title1<br />
+                                                @item.Title2
+                                            </p>
+                                            <p class="single-slide-text">
+                                                @item.Desc
+                                            </p>
+                                            <button class="single-slide-button">@item.BtnText</button>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            }
+                            ...
+                        </div>
+                        <!-- If we need pagination -->
+                        <div class="swiper-pagination"></div>
+
+                        <!-- If we need scrollbar -->
+                    </div>
+                </div>
+                <div class="col-lg-5 col-md-12 col-sm-12">
+                    <div class="row">
+                        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                            <div class="hero-section-product">
+                                <img style="object-fit:cover" src="@Model.Settings["BannerItem1Image"]" alt="" />
+                                <div class="hero-section-product-context">
+                                    <a href="#" class="hero-section-product-item">
+                                        @Model.Settings["BannerItem1Header"]
+                                    </a>
+                                    <p class="hero-section-product-text">@Model.Settings["BannerItem1Desc"]</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                            <div class="hero-section-product">
+                                <img style="object-fit:cover" src="@Model.Settings["BannerItem2Image"]" alt="" />
+                                <div class="hero-section-product-context">
+                                    <a href="#" class="hero-section-product-item">
+                                        @Model.Settings["BannerItem2Header"]
+                                    </a>
+                                    <p class="hero-section-product-text">
+                                        @Model.Settings["BannerItem1Desc"]
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                            <div class="hero-section-product">
+                                <img style="object-fit:cover" src="@Model.Settings["BannerItem3Image"]" alt="" />
+                                <div class="hero-section-product-context">
+                                    <a href="#" class="hero-section-product-item">
+                                        @Model.Settings["BannerItem3Header"]
+                                    </a>
+                                    <p class="hero-section-product-text">@Model.Settings["BannerItem3Desc"]</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                            <div class="hero-section-product">
+                                <img style="object-fit:cover" src="@Model.Settings["BannerItem4Image"]" alt="" />
+                                <div class="hero-section-product-context">
+                                    <a href="#" class="hero-section-product-item">
+                                        @Model.Settings["BannerItem4Header"]
+                                    </a>
+                                    <p class="hero-section-product-text">@Model.Settings["BannerItem4Desc"]</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="trending-product-section">
+        <div class="container">
+            <div class="row section-title">
+                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                    <h5 class="section_title">Hot Trending Product</h5>
+                </div>
+                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                    <a asp-controller="shop" asp-action="index" class="trending-product-allproduct">See All Product <i class="fa-solid fa-arrow-right"></i></a>
+                </div>
+            </div>
+            <div class="products">
+                <div class="container">
+                    <div class="row">
+                        @foreach (var item in Model.HotTrendingProducts)
+                        {
+                            <div class="col-sm-6 col-md-4 col-lg-3 col-xl-3 col-xxl-2">
+                                <div class="product-card">
+                                    <div class="card-image" style="width:215px;height:182px">
+                                        <a asp-controller="home" asp-action="productdetail" asp-route-id="@item.Id">
+                                            <img style="height:172px;object-fit:contain" src="~/uploads/products/@item.ProductImages.FirstOrDefault(x=>x.ThumbStatus==true)?.Image" alt="">
+                                        </a>
+                                        <a style="display:flex;text-decoration:none;color:black;text-align:center;align-items:center;justify-content:center;top:0" class="add-to-basket" asp-action="addbasket" asp-controller="shop" asp-route-id="@item.Id">
+                                            <i class="fa-solid fa-basket-shopping"></i>
+                                        </a>
+                                        <a style="display:flex;text-decoration:none;color:black;text-align:center;align-items:center;justify-content:center;top:70px;right:0" asp-controller="home" asp-action="GetProduct" asp-route-id="@item.Id" class="quick-modal quick-view" data-toggle="modal" data-target=".bd-example-modal-lg"><i class="fa-solid fa-eye" data-toggle="modal" data-target=".bd-example-modal-lg"></i></a>
+                                    </div>
+                                    <div class="card-content">
+                                        <div class="header">
+                                            @item.Brand.Name @item.Name
+                                        </div>
+                                        <div class="add-to-card">
+                                            <a class="add-to-card-button add-to-basket" style="text-align:center" asp-controller="shop" asp-action="addbasket" asp-route-id="@item.Id">Add To Card</a>
+                                        </div>
+                                        <div class="card-rating">
+                                            @for (int i = 1; i <= 5; i++)
+                                            {
+                                                <i class="@(item.Rate>= i ? "fas" : "far") fa-star"></i>
+                                            }
+                                        </div>
+                                        <div class="card-price">
+                                            @if (item.DiscountPercent > 0)
+                                            {
+                                                <span>$@((item.SalePrice* (1- item.DiscountPercent/100)).ToString("0.00")) <del style="color:red">$@item.SalePrice</del></span>
+                                            }
+                                            else
+                                            {
+                                                <span>$@item.SalePrice</span>
+                                            }
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="popular-categories">
+        <div class="container">
+            <div class="row section-title">
+                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                    <h5 class="section_title">Popular Categories</h5>
+                </div>
+                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                    <a asp-controller="shop" asp-action="index" class="trending-product-allproduct">See All Product <i class="fa-solid fa-arrow-right"></i></a>
+                </div>
+            </div>
+            <div class="popular-categories-cat">
+                <div class="container">
+                    <div class="row">
+                        @foreach (var item in Model.PopularCategories)
+                        {
+                            <div class="col-xl-2 col-lg-3 col-md-4 col-sm-6 col-6">
+                                <div class="category">
+                                    <img src="~/uploads/categories/@item.Image" alt="" style="filter:brightness(0.5)">
+                                    <div class="cat-content">
+                                        <div class="cat-content-header">
+                                            <a asp-controller="shop" asp-action="index" asp-route-categoryId="@item.Id">@item.Name</a>
+                                        </div>
+                                        <div class="cat-content-text">
+                                            (@Model.AllProducts.Where(x => x.SubCategory.Category.Id == item.Id).Count() Products)
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="top-deal-section">
+        <div class="container">
+            <div class="row section-title">
+                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                    <h5 class="section_title">Top Deals of the day</h5>
+                </div>
+                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                    <a asp-controller="shop" asp-action="index" class="trending-product-allproduct">See All Product <i class="fa-solid fa-arrow-right"></i></a>
+                </div>
+            </div>
+            <div class="row">
+                @foreach (var item in Model.TopDealProducts)
+                {
+                    <div class="col-lg-6">
+                        <div class="top-deal-product">
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-lg-5" style="height:375px">
+                                        <a asp-controller="home" asp-action="productdetail" asp-route-id="@item.Id">
+                                            <img style="width:177px;height:141px;object-fit:contain" src="~/uploads/products/@item.ProductImages.FirstOrDefault(x=>x.ThumbStatus==true)?.Image" alt="">
+                                        </a>
+                                    </div>
+                                    <div class="col-lg-7" >
+                                        <div class="top-deal-product-header">
+                                            @item.Brand.Name @item.Name
+                                        </div>
+                                        <div class="top-deal-product-rating">
+                                            @for (int i = 1; i <= 5; i++)
+                                            {
+                                                <i class="@(item.Rate>= i ? "fas" : "far") fa-star"></i>
+                                            }
+                                            <p>(@item.Reviews.Count() review)</p>
+                                        </div>
+                                        <div class="top-deal-product-price">
+                                            @if (item.DiscountPercent > 0)
+                                            {
+                                                <span>$@((item.SalePrice* (1- item.DiscountPercent/100)).ToString("0.00")) <del style="color:red">$@item.SalePrice</del></span>
+                                            }
+                                            else
+                                            {
+                                                <span>$@item.SalePrice</span>
+                                            }
+                                        </div>
+                                        <ul class="top-deal-product-features">
+                                            <li class="top-deal-product-feature">
+                                                <a href="#"><i class="fa-solid fa-circle"></i> @item.SoundSystem</a>
+                                            </li>
+                                            <li class="top-deal-product-feature">
+                                                <a href="#"><i class="fa-solid fa-circle"></i> Screen Size : @item.ScreenSize</a>
+                                            </li>
+                                            <li class="top-deal-product-feature">
+                                                <a href="#"><i class="fa-solid fa-circle"></i> Memory, Storage & SIM: @item.Ram GB RAM, @item.Memory GB.</a>
+                                            </li>
+                                            <li class="top-deal-product-feature">
+                                                <a href="#"><i class="fa-solid fa-circle"></i> @item.OperationSystem</a>
+                                            </li>
+                                        </ul>
+                                        <div class="top-deal-product-add-basket">
+                                            <button type="submit"><a style="text-decoration:none;color:white" asp-action="addbasket" asp-controller="shop" asp-route-id="@item.Id" class="add-to-basket">Add to Basket</a></button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+            <div class="row">
+                <div class="col-lg-4">
+                    <div class="promotion">
+                        <img style="object-fit:cover;filter:brightness(0.5)" src="@Model.Settings["Promotion1Image"]" alt="">
+                        <div class="promotion-content">
+                            <h6>
+                                <a href="#">@Model.Settings["Promotion1Title"]</a>
+                            </h6>
+                            <p>@Model.Settings["Promotion1Desc"]</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="promotion">
+                        <img src="@Model.Settings["Promotion2Image"]" alt="">
+                        <div class="promotion-content">
+                            <h6>
+                                <a href="#">
+                                    @Model.Settings["Promotion2Title"]
+                                </a>
+                            </h6>
+                            <p>@Model.Settings["Promotion2Desc"]</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="promotion">
+                        <img src="@Model.Settings["Promotion3Image"]" alt="">
+                        <div class="promotion-content">
+                            <h6>
+                                <a href="#">
+                                    @Model.Settings["Promotion3Title"]
+                                </a>
+                            </h6>
+                            <p>@Model.Settings["Promotion3Desc"]</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </section>
+    <section id="top-featured-products">
+        <div class="container">
+            <div class="row section-title">
+                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                    <h5 class="section_title">Top Featured Products</h5>
+                </div>
+                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                    <a asp-controller="shop" asp-action="index" class="trending-product-allproduct">See All Product <i class="fa-solid fa-arrow-right"></i></a>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-6 col-md-12 col-sm-12">
+                    @foreach (var item in Model.TopFeaturedProductBanner)
+                    {
+                        <div class="top-deal-product" style="height:405px">
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-lg-5">
+                                        <img style="height:172px;object-fit:contain" src="~/uploads/products/@item.ProductImages.FirstOrDefault(x=>x.ThumbStatus==true)?.Image
+                                             " alt="">
+                                    </div>
+                                    <div class="col-lg-7">
+                                        <div class="top-deal-product-header">
+                                            @item.Brand.Name @item.Name
+                                        </div>
+                                        <div class="top-deal-product-rating">
+                                            @for (int i = 1; i <= 5; i++)
+                                            {
+                                                <i class="@(item.Rate>= i ? "fas" : "far") fa-star"></i>
+                                            }
+                                            <p>(@item.Reviews.Count() review)</p>
+                                        </div>
+                                        <div class="top-deal-product-price">
+                                            @if (item.DiscountPercent > 0)
+                                            {
+                                                <span>$@((item.SalePrice* (1- item.DiscountPercent/100)).ToString("0.00")) <del style="color:red">$@item.SalePrice</del></span>
+                                            }
+                                            else
+                                            {
+                                                <span>$@item.SalePrice</span>
+                                            }
+                                        </div>
+                                        <ul class="top-deal-product-features">
+                                            <li class="top-deal-product-feature">
+                                                <a href="#"><i class="fa-solid fa-circle"></i> @item.SoundSystem</a>
+                                            </li>
+                                            <li class="top-deal-product-feature">
+                                                <a href="#"><i class="fa-solid fa-circle"></i> @item.OperationSystem</a>
+                                            </li>
+                                            <li class="top-deal-product-feature">
+                                                <a href="#"><i class="fa-solid fa-circle"></i> Memory, Storage & SIM: @item.Ram GB RAM, @item.Memory GB.</a>
+                                            </li>
+                                            <li class="top-deal-product-feature">
+                                                <a href="#"><i class="fa-solid fa-circle"></i> Screen Size: @item.ScreenSize</a>
+                                            </li>
+                                        </ul>
+                                        <div class="top-deal-product-add-basket">
+                                            <button type="submit"><a asp-action="addbasket" asp-controller="shop" asp-route-id="@item.Id" class="add-to-basket" style="text-decoration:none;color:white">Add To Card</a></button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+                <div class="col-lg-6">
+                    <div class="container">
+                        <div class="row">
+                            @foreach (var item in Model.TopFeaturedProducts)
+                            {
+                                <div class="col-lg-6 col-md-6 col-sm-6 col-12">
+                                    <div class="top-featured-product-right-item">
+                                        <div class="container">
+                                            <div class="row">
+                                                <div class="col-lg-6">
+                                                    <img style="height:172px;object-fit:contain" src="~/uploads/products/@item.ProductImages.FirstOrDefault(x=>x.ThumbStatus==true)?.Image" alt="">
+                                                </div>
+                                                <div class="col-lg-6">
+                                                    <h6>
+                                                        <a asp-controller="home" asp-action="productdetail" asp-route-id="@item.Id">
+                                                            @item.Brand.Name @item.Name
+                                                        </a>
+                                                    </h6>
+                                                    <div class="top-featured-product-rating">
+                                                        @for (int i = 1; i <= 5; i++)
+                                                        {
+                                                            <i class="@(item.Rate>= i ? "fas" : "far") fa-star"></i>
+                                                        }
+                                                    </div>
+                                                    <div class="top-featured-product-price">
+                                                        @if (item.DiscountPercent > 0)
+                                                        {
+                                                            <span>$@((item.SalePrice* (1- item.DiscountPercent/100)).ToString("0.00")) <del style="color:red">$@item.SalePrice</del></span>
+                                                        }
+                                                        else
+                                                        {
+                                                            <span>$@item.SalePrice</span>
+                                                        }
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            }
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="moving-text-area">
+        <div class="container">
+            <div class="row">
+                <p class="moving-text-area-text">Free UK Delivery - Return Over $100.00 ( Excluding Homeware ) | Free UK Collect From Store</p>
+            </div>
+        </div>
+    </section>
+    <section id="recommending-product-section">
+        <div class="container">
+            <div class="row section-title">
+                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                    <h5 class="section_title">Recommended For You</h5>
+                </div>
+                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                    <a asp-controller="shop" asp-action="index" class="trending-product-allproduct">See All Product <i class="fa-solid fa-arrow-right"></i></a>
+                </div>
+            </div>
+            <div class="products">
+                <div class="container">
+                    <div class="row">
+                        @foreach (var item in Model.RecommendingProducts)
+                        {
+                            <div class="col-sm-6 col-md-4 col-lg-3 col-xl-3 col-xxl-2">
+                                <div class="product-card">
+                                    <div class="card-image" style="width:215px;height:182px">
+                                        <a asp-controller="home" asp-action="productdetail" asp-route-id="@item.Id">
+                                            <img style="height:172px;object-fit:contain" src="~/uploads/products/@item.ProductImages.FirstOrDefault(x=>x.ThumbStatus==true)?.Image" alt="">
+                                        </a>
+                                        <a style="display:flex;text-decoration:none;color:black;text-align:center;align-items:center;justify-content:center;top:0" class="add-to-basket" asp-action="addbasket" asp-controller="shop" asp-route-id="@item.Id">
+                                            <i class="fa-solid fa-basket-shopping"></i>
+                                        </a>
+                                        <a style="display:flex;text-decoration:none;color:black;text-align:center;align-items:center;justify-content:center;top:70px;right:0" asp-controller="home" asp-action="GetProduct" asp-route-id="@item.Id" class="quick-modal quick-view" data-toggle="modal" data-target=".bd-example-modal-lg"><i class="fa-solid fa-eye" data-toggle="modal" data-target=".bd-example-modal-lg"></i></a>
+                                    </div>
+                                    <div class="card-content">
+                                        <div class="header">
+                                            @item.Brand.Name @item.Name
+                                        </div>
+                                        <div class="add-to-card">
+                                            <button class="add-to-card-button">Add To Card</button>
+                                        </div>
+                                        <div class="card-rating">
+                                            @for (int i = 1; i <= 5; i++)
+                                            {
+                                                <i class="@(item.Rate>= i ? "fas" : "far") fa-star"></i>
+                                            }
+                                        </div>
+                                        <div class="card-price">
+                                            @if (item.DiscountPercent > 0)
+                                            {
+                                                <span>$@((item.SalePrice* (1- item.DiscountPercent/100)).ToString("0.00")) <del style="color:red">$@item.SalePrice</del></span>
+                                            }
+                                            else
+                                            {
+                                                <span>$@item.SalePrice</span>
+                                            }
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="recommended-blog-section">
+        <div class="container">
+            <div class="row section-title">
+                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                    <h5 class="section_title">Recommended For You</h5>
+                </div>
+                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                    <a asp-controller="blog" asp-action="index" class="trending-product-allproduct">See All Blogs <i class="fa-solid fa-arrow-right"></i></a>
+                </div>
+            </div>
+            <div class="row">
+                @foreach (var item in Model.Blogs)
+                {
+                    <div class="col-xxl-2 col-xl-4 col-lg-4 col-md-4">
+                        <div class="blog">
+                            <div class="blog-image">
+                                <img style="height:187px;object-fit:cover" src="~/uploads/blogs/@item.Image" alt="">
+                            </div>
+                            <div class="blog-content">
+                                <div class="blog-header">
+                                    <a asp-controller="blog" asp-action="detail" asp-route-BlogId="@item.Id">@item.Title1</a>
+                                </div>
+                                <div class="blog-author">
+                                    <p>POSTED BY <a href="#">Admin</a></p>
+                                </div>
+                                <div class="blog-text">
+                                    <p class="text">@item.Desc1</p>
+                                </div>
+                                <div class="publish-date">
+                                    <button class="publish-date-button">Read More</button>
+                                    <a href="#">@item.CreatedAt.ToString("t")</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </section>
+    <!-- brand area start -->
+    <div class="brand-area section-padding">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="brand-active-carousel">
+                        @foreach (var item in Model.Brands)
+                        {
+                            <div class="brand-item" style="margin-right:120px">
+                                <a asp-controller="shop" asp-action="index" asp-route-brandId="@item.Id">
+                                    <img style="width:100px;background:transparent" src="~/uploads/brands/@item.Image" alt="brand image">
+                                </a>
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- brand area end -->
+    <section id="features-section">
+        <div class="container">
+            <div class="row">
+                @foreach (var item in Model.Features)
+                {
+                    <div class="col-lg-4 col-md-6 col-sm-12">
+                        <div class="feature">
+                            <div class="feature-icon">
+                                <i class="@item.Image"></i>
+                            </div>
+                            <div class="feature-content">
+                                <div class="feature-header">
+                                    @item.Title
+                                </div>
+                                <div class="feature-text">
+                                    @item.Description
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </section>
+    <div class="modal fade bd-example-modal-lg quick-view-body" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      ...
+    </div>
+  </div>
+</div>
+</main>

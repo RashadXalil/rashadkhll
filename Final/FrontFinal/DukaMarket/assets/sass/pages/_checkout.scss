@@ -1,0 +1,163 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Rubik", sans-serif;
+}
+main {
+  #custom-banner-section-checkout {
+    width: 100%;
+    height: 400px;
+    margin-bottom: 40px;
+    background-image: url(https://themepure.net/template/dukamarket/dukamarket/assets/img/banner/page-banner-3.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .page-header {
+      color: white;
+      text-align: center;
+      .page-header-text {
+        font-size: 60px;
+      }
+      span {
+        a {
+          text-decoration: none;
+          color: #666;
+        }
+      }
+    }
+  }
+  #checkout-section {
+    h3 {
+      padding-bottom: 10px;
+      margin-bottom: 20px;
+      font-weight: 600;
+      font-size: 26px;
+      border-bottom: 1px solid #e4e4e4;
+    }
+    label {
+      margin-bottom: 10px;
+      color: #666;
+      display: block;
+      span {
+        color: red;
+      }
+    }
+    select {
+      border: 1px solid lightgrey;
+      margin-bottom: 10px;
+    }
+    input {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #e4e4e4;
+      height: 45px;
+      margin-bottom: 10px;
+      &:focus {
+        outline: 1px solid #fcbe00;
+      }
+    }
+    textarea {
+      width: 100%;
+      &:focus {
+        border-color: #fcbe00;
+      }
+    }
+    .your-order {
+      border: 3px solid #e4e4e4;
+      width: 100%;
+      padding: 40px;
+      table{
+          margin: 0;
+      }
+      .your-order-table{
+          width: 100%;
+          height: 100px;
+          table{
+              width: 100%;
+              color: #6f7172;
+              font-size: 18px;
+              text-align: left;
+              padding-top: 20px;
+              padding-bottom: 20px;
+              thead{
+                  tr{
+                      border-bottom: 1px solid #e4e4e4;
+                      td{
+                          padding-bottom: 10px;
+                      }
+                  }
+              }
+              tbody{
+                tr{
+                    border-bottom: 1px solid #e4e4e4;
+                    td{
+                        padding-top: 20px;
+                        padding-bottom: 10px;
+                    }
+                }
+            }
+            tfoot{
+                tr{
+                    border-bottom: 1px solid #e4e4e4;
+                    td{
+                        padding-top: 50px;
+                        padding-bottom: 10px;
+                    }
+                }
+            }
+          }
+      }
+      .payment-method {
+        margin-top: 200px;
+        .accordion {
+          margin-bottom: 20px;
+          overflow: hidden;
+          text-align: left;
+          .accordionheader {
+            cursor: pointer;
+            border-bottom: 1px solid #e4e4e4;
+            padding-top: 20px;
+            font-size: 18px;
+            padding-bottom: 20px;
+            letter-spacing: 2px;
+            color: #3b566e;
+            overflow: hidden;
+            transition: 0.3s;
+            &:hover {
+              transform: translateX(10px);
+            }
+          }
+          .accordionbody {
+            display: none;
+            p {
+              font-size: 16px;
+              letter-spacing: 1px;
+              padding-bottom: 20px;
+              padding-top: 20px;
+              color: #6f8ba4;
+            }
+          }
+        }
+        .order-button-payment{
+            button{
+                width: 100%;
+                padding: 20px;
+                background-color:#fcbe00;
+                border: none;
+                font-size: 18px;
+                font-weight: 500;
+                border-radius: 5px;
+                transition: 0.3s linear;
+                 &:hover{
+                     outline:1px solid #fcbe00;
+                     background-color: #fff;
+                 }
+            }
+        }
+      }
+    }
+  }
+}

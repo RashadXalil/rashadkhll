@@ -1,0 +1,236 @@
+﻿@model HomeViewModel
+@{
+    int counter = 1;
+    int thumbcounter = 1;
+}
+<main>
+    <section id="product-detail-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="productdetail-nav-area">
+                        <p><a href="shop.html">Shop </a><span>/</span> Detail</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="product-detail">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-6">
+                    <div class="product-detail-nav">
+                        <ul class="product-nav-tabs">
+                            @foreach (var item in Model.Product.ProductImages)
+                            {
+                                <li class="product-nav-item">
+                                    <button class="nav-link nav-link-@(counter++)">
+                                        <img style="width:80px;height:56px;object-fit:contain" src="~/uploads/products/@item.Image"
+                                             alt="" />
+                                    </button>
+                                </li>
+                            }
+                        </ul>
+                        <div class="product-detail-thumb">
+                            @foreach (var item in Model.Product.ProductImages)
+                            {
+                                <div class="@(thumbcounter==1 ? "active" : "") tab-content tab-content-@(thumbcounter++)" style="margin-left:35px">
+                                    <img style="width:359px;height:359px;object-fit:contain" src="~/uploads/products/@item.Image"
+                                         alt="" />
+                                </div>
+                            }
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-6">
+                    <div class="product-detail-content">
+                        <h6>@Model.Product.Brand.Name @Model.Product.Name</h6>
+                        <div class="product-rating">
+                            <ul class="rating">
+                                @for (int i = 1; i <= 5; i++)
+                                {
+                                    <i class="@(Model.Product.Rate>= i ? "fas" : "far") fa-star"></i>
+                                }
+                            </ul>
+                            <span>(01 review)</span>
+                            <span><a href="#">Add your review</a></span>
+                        </div>
+                        <div class="product-price">
+                            @if (Model.Product.DiscountPercent > 0)
+                            {
+                                <span>$@((Model.Product.SalePrice* (1- Model.Product.DiscountPercent/100)).ToString("0.00")) <del style="color:red">$@Model.Product.SalePrice</del></span>
+                            }
+                            else
+                            {
+                                <span>$@Model.Product.SalePrice</span>
+                            }
+                        </div>
+                        <div class="product-features">
+                            <ul>
+                                <li>@Model.Product.SoundSystem</li>
+                                <li>Memory, Storage & SIM: @Model.Product.Ram GB RAM, @Model.Product.Memory GB.</li>
+                                <li>@Model.Product.OperationSystem</li>
+                            </ul>
+                        </div>
+                        <div class="product-card-option" style="display:block">
+                            <div class="number">
+                                <button type="submit"><a style="text-decoration:none;color:black" asp-controller="shop" asp-action="addbasket" asp-route-id="@Model.Product.Id" class="add-to-basket">Add To Basket</a></button>
+                                @if (User.Identity.IsAuthenticated)
+                                {
+                                    <button type="submit"><a style="text-decoration:none;color:black" asp-controller="wishlist" asp-action="addwishlist" asp-route-id="@Model.Product.Id" class="add-to-wishlist">Add To Wishlist</a></button> <br />
+                                }
+                                else
+                                {
+                                    <button type="submit"><a style="text-decoration:none;color:black" asp-controller="account" asp-action="memberlogin">Add To Wishlist</a></button> <br />
+                                }
+                            </div>
+                        <div class="product-info">
+                            <span class="product-info-category" style="margin-top:30px">
+                                <span>Category :</span>
+                                <span><a href="#">@Model.Product.SubCategory.Category.Name</a></span>
+                            </span>
+                            <span class="product-info-category">
+                                <span>SubCategory :</span>
+                                <span><a href="#">@Model.Product.SubCategory.Name</a></span>
+                            </span>
+                            <span class="product-info-brand">
+                                <span>Brand : </span>
+                                <span><a href="#">@Model.Product.Brand.Name</a></span>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="product-about">
+        <div class="container">
+            <div class="row">
+                <div class="product-about-headers">
+                    <a href="#"
+                       class="product-about-header product-description-header active">
+                        Description
+                    </a>
+                    <a href="#"
+                       class="product-about-header product-additional-info-header">
+                        Additional Informations
+                    </a>
+                    <a href="#" class="product-about-header product-reviews-header">
+                        Reviews <span>(@Model.Product.Reviews.Count())</span>
+                    </a>
+                </div>
+                <div class="row">
+                    <div class="product-about-bodies">
+                        <div class="product-about-body product-description-body">
+                            <p>
+                                @Model.Product.Desc
+                            </p>
+                        </div>
+                        <div class="product-about-body product-additional-info-body">
+                            <table class="table table-striped">
+                                <tbody>
+                                    <tr>
+                                        <td class="td-header">Weight</td>
+                                        <td class="td-data">@Model.Product.Weight kq</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="td-header">Product</td>
+                                        <td class="td-data">
+                                            @Model.Product.Name
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="td-header">Color</td>
+                                        <td class="td-data">@Model.Product.Color.Name</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="td-header">Brand</td>
+                                        <td class="td-data">@Model.Product.Brand.Name</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="td-header">Screen Size</td>
+                                        <td class="td-data">@Model.Product.ScreenSize inch</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="td-header">Ram</td>
+                                        <td class="td-data">@Model.Product.Ram GB</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="td-header">Memory</td>
+                                        <td class="td-data">@Model.Product.Memory GB</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="td-header">Operation System</td>
+                                        <td class="td-data">@Model.Product.OperationSystem</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="product-about-body product-reviews-body">
+                            <div class="row">
+                                <div class="col-xl-4">
+                                    <div class="review-rate">
+                                        <h5>@Model.Product.Rate</h5>
+                                        <div class="review-star">
+                                            @for (int i = 1; i <= 5; i++)
+                                            {
+                                                <i class="@(Model.Product.Rate>= i ? "fas" : "far") fa-star"></i>
+                                            }
+                                        </div>
+                                        <span>@Model.Product.Reviews.Count() review</span>
+                                    </div>
+                                </div>
+                                <div class="col-xl-8">
+                                    <p class="product-reviews-header">
+                                        <span>@Model.Product.Reviews.Count()</span> REVIEW FOR "
+                                        <a asp-controller="home" asp-action="productdetail" asp-route-Id="@Model.Product.Id">@Model.Product.Name</a> "
+                                    </p>
+                                    @foreach (var item in Model.Product.Reviews)
+                                    {
+                                        <div class="product-review-item">
+                                            <div class="author-img">
+                                                <img style="width:50px" src="https://cdn.pixabay.com/photo/2020/07/01/12/58/icon-5359553_1280.png"
+                                                     alt="" />
+                                            </div>
+
+                                            <div class="product-review-content">
+                                                <div class="rate-info">
+                                                    @for (int i = 1; i <= 5; i++)
+                                                    {
+                                                        <span><i class="@(item.Rate>= i ? "fas" : "far") fa-star"></i></span>
+                                                    }
+                                                </div>
+                                                <div class="product-review-author-name">
+                                                    <h6>
+                                                        @item.AppUser.Name @item.AppUser.Surname
+                                                        <span> - @item.CreatedAt.ToString("M")</span>
+                                                    </h6>
+                                                </div>
+                                                <p>
+                                                   @item.Text
+                                                </p>
+                                            </div>
+                                        </div>
+
+                                    }
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-xl-12">
+                                    <div class="product-detail-comment-header">
+                                        <h3>Add a review</h3>
+                                        <p>Your email address will not be published. Required fields are marked *</p>
+                                    </div>
+                                    <div class="product-detail-comment">
+                                        @Html.Partial("_ReviewFormPartial", Model.Review)
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+</main>

@@ -1,0 +1,180 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Rubik", sans-serif;
+}
+main {
+  #custom-banner-section {
+    width: 100%;
+    height: 360px;
+    margin-bottom: 40px;
+    background-image: url(https://themepure.net/template/dukamarket/dukamarket/assets/img/banner/page-banner-4.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .page-header {
+      text-align: center;
+      color: white;
+      .page-header-text {
+        font-size: 60px;
+      }
+      span {
+        a {
+          text-decoration: none;
+          color: #666;
+        }
+      }
+    }
+  }
+  #card-products-section {
+    .container {
+      overflow-y: hidden;
+      .table {
+        th {
+          text-align: center;
+        }
+        td {
+          height: 130px;
+          line-height: 130px;
+          text-align: center;
+          .number {
+            span {
+              cursor: pointer;
+            }
+            .minus,
+            .plus {
+              width: 20px;
+              height: 20px;
+              background: #f2f2f2;
+              border-radius: 4px;
+              padding: 10px;
+              border: 1px solid #ddd;
+              text-align: center;
+              vertical-align: middle;
+            }
+            input {
+              height: 50px;
+              width: 100px;
+              text-align: center;
+              font-size: 26px;
+              border: 1px solid #ddd;
+              border-radius: 4px;
+              display: inline-block;
+              vertical-align: middle;
+            }
+          }
+          img {
+            width: 130px;
+          }
+          i {
+            cursor: pointer;
+            transition: 0.3s linear;
+            &:hover {
+              color: #fcbe00;
+            }
+          }
+        }
+      }
+      .coupon-enter {
+        margin-bottom: 20px;
+        .coupon-input {
+          border: 2px solid #e4e4e4;
+          padding: 0 15px;
+          height: 50px;
+          margin-right: 15px;
+        }
+        .apply-coupon {
+          border: none;
+          background-color: #fcbe00;
+          color: white;
+          height: 50px;
+          font-weight: 600;
+          font-size: 16px;
+          text-align: center;
+          padding-right: 20px;
+          padding-left: 20px;
+          transition: 0.3s linear;
+          &:hover{
+            color: black;
+            background-color: white;
+            border: 1px solid #fcbe00;
+        }
+        }
+      }
+      .update-card-button-div{
+        .update-card{
+            float: right;
+            border: none;
+            background-color: #fcbe00;
+            color: white;
+            height: 50px;
+            font-weight: 600;
+            font-size: 16px;
+            text-align: center;
+            padding-right: 20px;
+            padding-left: 20px;
+            transition: 0.3s linear;
+            &:hover{
+                color: black;
+                background-color: white;
+                border: 1px solid #fcbe00;
+            }
+        }
+      }
+      .card-total-div{
+          padding: 20px;
+          .card-total-header{
+            font-size: 25px;
+            margin-bottom: 20px;
+            font-weight: 600;
+            color: #1F2024;
+          }
+          .card-total-item{
+              height: 50px;
+              padding-left: 10px;
+              padding-right: 10px;
+              color:#999;
+              margin-bottom: 5px;
+              line-height: 50px;
+              display: flex;
+              border: 1px solid #e4e4e4;
+              justify-content: space-between;
+          }
+        button{
+            margin-top: 20px;
+            margin-bottom: 100px;
+            float: left;
+            border: none;
+            background-color: #fcbe00;
+            color: white;
+            height: 50px;
+            font-weight: 600;
+            font-size: 16px;
+            text-align: center;
+            padding-right: 20px;
+            padding-left: 20px;
+            transition: 0.3s linear;
+            &:hover{
+                color: black;
+                background-color: white;
+                border: 1px solid #fcbe00;
+            }
+        }
+      }
+    }
+  }
+  @media only screen and (max-width: 768px) {
+    .product-name-th {
+      display: none;
+    }
+    .product-name-td {
+      display: none;
+    }
+    .add-to-card {
+      font-size: 10px;
+    }
+  }
+}

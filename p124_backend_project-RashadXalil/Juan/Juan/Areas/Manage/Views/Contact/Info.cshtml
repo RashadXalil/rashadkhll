@@ -1,0 +1,23 @@
+﻿@model ContactUs
+@{
+    ViewData["Title"] = "Info";
+}
+
+<h1>More Inf0</h1>
+
+<div class="container">
+    <div class="row">
+        <div class="col-lg-8 mx-auto">
+            <div class="card" style="width: 18rem;">
+                <div class="card-body">
+                    <h5 class="card-title">FullName: @Model.FullName</h5>
+                    <h6 class="card-title">Email: @Model.Email</h6>
+                    <h6 class="card-title">Phone Number: @Model.PhoneNumber</h6>
+                    <h6 class="card-title">Subject: @Model.Subject</h6>
+                    <h6 class="card-title">Message: @Model.Message</h6>
+                    <a asp-action="index" class="card-link btn btn-primary" style="width:100%">Go to list</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

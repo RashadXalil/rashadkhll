@@ -1,0 +1,156 @@
+﻿@model MemberProfileViewModel
+@{
+    ViewData["Title"] = "Profile";
+    int orderCounter = 0;
+    int orderItemCounter = 0;
+}
+<!-- main wrapper start -->
+<main>
+    <!-- breadcrumb area start -->
+    <div class="breadcrumb-area bg-img" data-bg="assets/img/banner/breadcrumb-banner.jpg">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="breadcrumb-wrap text-center">
+                        <nav aria-label="breadcrumb">
+                            <h1 class="breadcrumb-title">My Account</h1>
+                            <ul class="breadcrumb">
+                                <li class="breadcrumb-item"><a asp-controller="home" asp-action="index">Home</a></li>
+                                <li class="breadcrumb-item active" aria-current="page">My Account</li>
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- breadcrumb area end -->
+    <!-- my account wrapper start -->
+    <div class="my-account-wrapper section-padding">
+        <div class="container custom-container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <!-- My Account Page Start -->
+                    <div class="myaccount-page-wrapper">
+                        <!-- My Account Tab Menu Start -->
+                        <div class="row">
+                            <div class="col-lg-3 col-md-4">
+                                <div class="myaccount-tab-menu nav" role="tablist">
+                                    <a href="#dashboad" class="active" data-toggle="tab">
+                                        <i class="fa fa-dashboard"></i>
+                                        Dashboard
+                                    </a>
+                                    <a href="#orders" data-toggle="tab"><i class="fa fa-cart-arrow-down"></i> Orders</a>
+                                    <a href="#account-info" data-toggle="tab"><i class="fa fa-user"></i> Account Details</a>
+                                    <a asp-action="logout" asp-controller="account"><i class="fa fa-sign-out"></i> Logout</a>
+                                </div>
+                            </div>
+                            <!-- My Account Tab Menu End -->
+                            <!-- My Account Tab Content Start -->
+                            <div class="col-lg-9 col-md-8">
+                                <div class="tab-content" id="myaccountContent">
+                                    <!-- Single Tab Content Start -->
+                                    <div class="tab-pane fade show active" id="dashboad" role="tabpanel">
+                                        <div class="myaccount-content">
+                                            <h3>Dashboard</h3>
+                                            <div class="welcome">
+                                                <p>Hello, <strong>@Model.Member.FullName</strong> (If Not <strong>@Model.Member.FullName !</strong><a href="login-register.html" class="logout"> Logout</a>)</p>
+                                            </div>
+                                            <p class="mb-0">From your account dashboard. you can easily check & view your recent orders, manage your shipping and billing addresses and edit your password and account details.</p>
+                                        </div>
+                                    </div>
+                                    <!-- Single Tab Content End -->
+                                    <!-- Single Tab Content Start -->
+                                    <div class="tab-pane fade" id="orders" role="tabpanel">
+                                        <div class="myaccount-content">
+                                            <h3>Orders</h3>
+                                            <div class="myaccount-table table-responsive text-center">
+                                                <table class="table table-bordered">
+                                                    <thead class="thead-light">
+                                                        <tr>
+                                                            <th></th>
+                                                            <th>Items count</th>
+                                                            <th>Phone </th>
+                                                            <th>Total</th>
+                                                            <th>Date</th>
+                                                            <th>Status</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        @foreach (var order in Model.Orders)
+                                                        {
+                                                            orderItemCounter = 0;
+                                                            orderCounter++;
+                                                            <tr data-toggle="collapse" data-target="#demo-@order.Id" class="accordion-toggle">
+                                                                <td>@orderCounter</td>
+                                                                <td>@order.OrderItems.Count</td>
+                                                                <td>@order.PhoneNumber</td>
+                                                                <td>@order.TotalPrice</td>
+                                                                <td>@order.CreatedAt.ToString("dd-MM-yyyy HH:mm")</td>
+                                                                <td>@order.Status</td>
+                                                            </tr>
+
+                                                            <tr>
+                                                                <td colspan="12" class="hiddenRow">
+                                                                    <div class="accordian-body collapse" id="demo-@order.Id">
+                                                                        <table class="table table-striped">
+                                                                            <thead>
+                                                                                <tr class="info">
+                                                                                    <th></th>
+                                                                                    <th>Book Name</th>
+                                                                                    <th>Count</th>
+                                                                                    <th>Unit price</th>
+                                                                                </tr>
+                                                                            </thead>
+
+                                                                            <tbody>
+
+                                                                                @foreach (var orderItem in order.OrderItems)
+                                                                                {
+                                                                                    orderItemCounter++;
+                                                                                    <tr data-toggle="collapse" class="accordion-toggle" data-target="#demo10">
+                                                                                        <td>@orderItemCounter</td>
+                                                                                        <td>@orderItem.Product.Name</td>
+                                                                                        <td>@orderItem.Count </td>
+                                                                                        <td>@orderItem.DiscountedPrice</td>
+                                                                                    </tr>
+                                                                                }
+
+
+
+
+
+                                                                            </tbody>
+                                                                        </table>
+
+                                                                    </div>
+                                                                </td>
+                                                            </tr>
+                                                        }
+
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- Single Tab Content End -->
+                                    <!-- Single Tab Content Start -->
+                                    <div class="tab-pane fade" id="account-info" role="tabpanel">
+                                        <div class="myaccount-content">
+                                            <h3>Account Details</h3>
+                                            <div class="account-details-form">
+                                                @Html.Partial("_MemberUpdateFormPartial", Model.Member)
+                                            </div>
+                                        </div>
+                                    </div> <!-- Single Tab Content End -->
+                                </div>
+                            </div> <!-- My Account Tab Content End -->
+                        </div>
+                    </div> <!-- My Account Page End -->
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- my account wrapper end -->
+</main>
+<!-- main wrapper end -->

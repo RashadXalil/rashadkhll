@@ -1,0 +1,31 @@
+﻿@model Product
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<h1>Delete</h1>
+
+<div class="container">
+    <div class="row">
+        <div class="col-lg-8 mx-auto">
+            <div class="card" style="width: 18rem;margin:0 auto">
+                <div class="card-body">
+                    <h5 class="card-title" style="text-align:center">@Model.Name</h5>
+                    <h6 class="card-title" style="text-align:center">@Model.Desc</h6>
+                    @if (Model.Image != null)
+                    {
+                        <div class="img-box" style="position:relative;display:block ;margin-top:20px;margin-bottom:20px;margin-left:75px">
+                            <input type="hidden" name="Image" value="@Model.Image" />
+                            <img width="100" src="~/uploads/products/@Model.Image" />
+                        </div>
+                    }
+                    <a asp-action="index" class="card-link btn btn-primary" style="margin-left:25px">Go to list</a>
+                    <form asp-action="delete" method="post" class="d-inline-block">
+                        <input type="hidden" value="@Model.Id" name="Id" />
+                        <button type="submit" class="btn btn-danger">Delete</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

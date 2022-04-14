@@ -1,0 +1,45 @@
+﻿@model BasketViewModel
+@{ 
+    var counter = 0;
+}
+<div class="minicart-item-wrapper">
+    <ul>
+        @foreach (var item in Model.BasketProducts)
+        {
+            counter += item.Count;
+
+            <li class="minicart-item">
+                <div class="minicart-thumb">
+                    <a href="product-details.html">
+                        <img src="~/uploads/products/@item.Product.Image" alt="product">
+                    </a>
+                </div>
+                <div class="minicart-content">
+                    <h3 class="product-name">
+                        <a href="product-details.html">@item.Product.Brand.Name @item.Product.Name</a>
+                    </h3>
+                    <p>
+                        <span class="cart-quantity">@item.Count <strong>&times;</strong></span>
+                        <span class="cart-price">$@((item.Product.DiscountPercent>0?(item.Product.SalePrice*(1-item.Product.DiscountPercent/100)):item.Product.SalePrice).ToString("0.00"))</span>
+                    </p>
+                </div>
+                <a asp-route-id="@item.Product.Id" asp-controller="Shop" asp-action="RemoveBasket" class="minicart-remove remove-basket"><i class="ion-android-close"></i></a>
+            </li>
+        }
+        <li>
+            <input type="hidden" value="@counter" class="notification-counter" />
+        </li>
+    </ul>
+</div>
+<div class="minicart-pricing-box">
+    <ul>
+        <li class="total">
+            <span>total</span>
+            <span><strong>$@Model.TotalPrice.ToString("0.00")</strong></span>
+        </li>
+    </ul>
+</div>
+<div class="minicart-button">
+    <a asp-action="checkout" asp-controller="order"><i class="fa fa-shopping-cart"></i> view cart</a>
+    <a asp-controller="order" asp-action="checkout"><i class="fa fa-share"></i> checkout</a>
+</div>

@@ -1,0 +1,53 @@
+﻿@model Order
+@{
+    ViewData["Title"] = "GetOrderByTrackId";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<main>
+    <section id="track-section-1" style="background-color:#f2f2f2;height:500px">
+        <div class="container">
+            <div class="col-md-12">
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        <table class="table table-condensed table-striped" style="margin-top:100px">
+                            <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>Name</th>
+                                    <th>Surname</th>
+                                    <th>Order Total Price</th>
+                                    <th>Created At</th>
+                                    <th>Status</th>
+                                </tr>
+                            </thead>
+
+                            <tbody>
+                                <tr data-toggle="collapse" data-target="#demo1" class="accordion-toggle">
+                                    <td><button class="btn btn-default btn-xs"><span class="glyphicon glyphicon-eye-open"></span></button></td>
+                                    <td>@Model.FirstName</td>
+                                    <td>@Model.Surname</td>
+                                    <td>$@Model.TotalPrice</td>
+                                    <td>@Model.CreatedAt.ToString("g")</td>
+                                    <td>@Model.Status</td>
+                                </tr>
+                                <tr>
+                                    <td colspan="12" class="hiddenRow">
+                                        <div style="margin-top:20px" class="accordian-body collapse" id="demo1">
+                                            <p style="text-align:center">
+                                                Hello <span style="color:#fcbe00">@Model.FirstName @Model.Surname</span> Your Order Status Is <span style="color:#fcbe00">@Model.Status</span> . If you have any question about your order please <a asp-controller="home" asp-action="contactus" style="text-decoration:none;color:#fcbe00">contact with us</a> 
+                                            </p>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </section>
+</main>
+
+

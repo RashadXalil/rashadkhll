@@ -1,0 +1,33 @@
+﻿  @model List<WishlistItem>
+    <!-- Main Start  -->
+    <main>
+        <section id="custom-banner-section">
+            <div class="page-header">
+                <p class="page-header-text">Wishlist</p>
+                <span><a href="index.html">Home / </a>Wishlist</span>
+            </div>
+        </section>
+        <section id="wishlist-products-section">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th scope="col" class="image-th">Images</th>
+                                    <th scope="col" class="product-name-th">Product</th>
+                                    <th scope="col" class="product-price-th">Unit Price</th>
+                                    <th scope="col" class="button-th">Quantity</th>
+                                    <th scope="col" class="total-price-th">Total</th>
+                                    <th scope="col" class="remove-th">Remove</th>
+                                </tr>
+                            </thead>
+                            @* ------------------------------- *@ 
+                            @Html.Partial("_WishlistItemPartial",Model)
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    <!-- Main End -->

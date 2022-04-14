@@ -1,0 +1,147 @@
+﻿@model Product
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col-lg-8 mx-auto">
+            <h1>Edit</h1>
+            <form asp-action="edit" method="post" enctype="multipart/form-data">
+                <div class="form-row">
+                    <div class="form-group col-lg-12">
+                        <label asp-for="Name">Name</label>
+                        <input class="form-control" asp-for="Name" placeholder="Enter Name">
+                        <span class="text-danger" asp-validation-for="Name"></span>
+                    </div>
+                    <div class="form-group col-lg-12">
+                        <label asp-for="Desc">Desc</label>
+                        <input class="form-control" asp-for="Desc" placeholder="Enter Desc">
+                        <span class="text-danger" asp-validation-for="Desc"></span>
+                    </div>
+                    <div class="form-group col-lg-12">
+                        <label asp-for="Memory">Memory</label>
+                        <input class="form-control" asp-for="Memory" placeholder="Enter Memory">
+                        <span class="text-danger" asp-validation-for="Memory"></span>
+                    </div>
+                    <div class="form-group col-lg-12">
+                        <label asp-for="SoundSystem">Sound System</label>
+                        <input class="form-control" asp-for="SoundSystem" placeholder="Enter Sound System">
+                        <span class="text-danger" asp-validation-for="SoundSystem"></span>
+                    </div>
+                    <div class="form-group col-lg-12">
+                        <label asp-for="OperationSystem">Operation System</label>
+                        <input class="form-control" asp-for="OperationSystem" placeholder="Enter Operation System">
+                        <span class="text-danger" asp-validation-for="OperationSystem"></span>
+                    </div>
+                    <div class="form-group col-lg-12">
+                        <label asp-for="Ram">Ram</label>
+                        <input class="form-control" asp-for="Ram" placeholder="Enter Ram">
+                        <span class="text-danger" asp-validation-for="Ram"></span>
+                    </div>
+                    <div class="form-group col-lg-12">
+                        <label asp-for="ScreenSize">Screen Size</label>
+                        <input class="form-control" asp-for="ScreenSize" placeholder="Enter Screen Size">
+                        <span class="text-danger" asp-validation-for="ScreenSize"></span>
+                    </div>
+                    <div class="form-group col-lg-12">
+                        <label asp-for="Weight">Weight</label>
+                        <input class="form-control" asp-for="Weight" placeholder="Enter Weight">
+                        <span class="text-danger" asp-validation-for="Weight"></span>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-lg-4">
+                        <label asp-for="BrandId">Brand</label>
+                        <select class="form-control" asp-for="BrandId" asp-items="@new SelectList(ViewBag.Brands,nameof(Brand.Id),nameof(Brand.Name))">
+                        </select>
+                        <span class="text-danger" asp-validation-for="BrandId"></span>
+
+                    </div>
+                    <div class="form-group col-lg-4">
+                        <label asp-for="SubCategoryId">SubCategory</label>
+                        <select class="form-control" asp-for="SubCategoryId" asp-items="@new SelectList(ViewBag.Subcategories,nameof(SubCategory.Id),nameof(SubCategory.Name))">
+                        </select>
+                    </div>
+                    <div class="form-group col-lg-4">
+                        <label asp-for="ColorId">Color</label>
+                        <select class="form-control" asp-for="ColorId" asp-items="@new SelectList(ViewBag.Colors,nameof(Color.Id),nameof(Color.Name))">
+                        </select>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-lg-4">
+                        <label asp-for="CostPrice">CostPrice</label>
+                        <input class="form-control" asp-for="CostPrice">
+                        <span class="text-danger" asp-validation-for="CostPrice"></span>
+                    </div>
+                    <div class="form-group col-lg-4">
+                        <label asp-for="SalePrice">SalePrice</label>
+                        <input class="form-control" asp-for="SalePrice">
+                        <span class="text-danger" asp-validation-for="SalePrice"></span>
+                    </div>
+                    <div class="form-group col-lg-4">
+                        <label asp-for="DiscountPercent">DiscountPercent</label>
+                        <input class="form-control" asp-for="DiscountPercent">
+                        <span class="text-danger" asp-validation-for="DiscountPercent"></span>
+                    </div>
+                </div>
+                <div class="form-row" style="padding:0px 25px;">
+                    <div class="form-check col-lg-4">
+                        <input class="form-check-input" type="checkbox" asp-for="IsNew">
+                        <label class="form-check-label" asp-for="IsNew">
+                            Is New
+                        </label>
+                    </div>
+                    <div class="form-check col-lg-4">
+                        <input class="form-check-input" type="checkbox" asp-for="IsFeatured">
+                        <label class="form-check-label" asp-for="IsFeatured">
+                            Is Featured
+                        </label>
+                    </div>
+                    <div class="form-check col-lg-4">
+                        <input class="form-check-input" type="checkbox" asp-for="IsTrending">
+                        <label class="form-check-label" asp-for="IsTrending">
+                            Is Trending
+                        </label>
+                    </div>
+                </div>
+                <div class="form-row">
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-lg-6">
+                        <label asp-for="ThumbFile">ThumbFile</label>
+                        <input class="form-control" asp-for="ThumbFile" placeholder="Select image">
+                        <span class="text-danger" asp-validation-for="ThumbFile"></span>
+                        <img width="150" src="~/uploads/products/@Model.ProductImages.FirstOrDefault(x=>x.ThumbStatus==true)?.Image" />
+                    </div>
+                    <div class="form-group col-lg-12">
+                        <label asp-for="Files">Files</label>
+                        <input class="form-control" asp-for="Files" placeholder="Select image">
+                        <span class="text-danger" asp-validation-for="Files"></span>
+                        @foreach (var item in Model.ProductImages.Where(x => x.ThumbStatus == null))
+                        {
+                            <div class="img-box mt-2" style="position:relative;display:inline-block">
+                                <i class="fas fa-times remove-img-box" style="position: absolute;right: -5px;top: -8px; color: red; cursor: pointer;"></i>
+                                <input type="hidden" name="FileIds[]" value="@item.Id" />
+                                <img width="100" src="~/uploads/products/@item.Image" />
+                            </div>
+                        }
+                    </div>
+                </div>
+
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+@section Scripts{
+    <script>
+    $(document).ready(function () {
+        $(document).on("click", ".remove-img-box", function () {
+            $(this).parent().remove()
+        })
+    })
+    </script>
+}

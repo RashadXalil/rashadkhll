@@ -1,0 +1,83 @@
+﻿@model MemberRegisterViewModel
+<main>
+      <section id="custom-banner-section-register">
+        <div class="page-header">
+          <p class="page-header-text">Register</p>
+          <span><a href="index.html">Home / </a>Register</span>
+        </div>
+      </section>
+      <section id="register-section">
+        <div class="container">
+          <div class="row">
+            <div class="col-12">
+              <div class="section-title">Register</div>
+              <form id="RegisterForm" asp-controller="account" asp-action="register" method="post">
+                  <label for="username"
+                         asp-for="UserName">
+                      Username or email address
+                      <span class="star-span">*</span>
+                  </label>
+                  <input type="text"
+                         class="form-input"
+                         id="username"
+                         asp-for="UserName"
+                         placeholder="Enter Username" />
+                  <span asp-validation-for="UserName" class="text-danger"></span> <br />
+                  <label for="name"
+                         asp-for="Name">
+                      Name
+                      <span class="star-span">*</span>
+                  </label>
+                  <input type="text"
+                         class="form-input"
+                         id="name"
+                         asp-for="Name"
+                         placeholder="Enter Name" />
+                  <span asp-validation-for="Name" class="text-danger"></span> <br />
+                  <label for="surname"
+                         asp-for="Surname">
+                      SurName
+                      <span class="star-span">*</span>
+                  </label>
+                  <input type="text"
+                         class="form-input"
+                         id="surname"
+                         asp-for="Surname"
+                         placeholder="Enter Surname" />
+                  <span asp-validation-for="Surname" class="text-danger"></span> <br />
+                  <label for="email" asp-for="Email">Email address <span class="star-span">*</span></label>
+                  <input type="text"
+                         class="form-input"
+                         id="name"
+                         asp-for="Email"
+                         placeholder="Enter Email" />
+                  <span asp-validation-for="Email" class="text-danger"></span> <br />
+                  <label asp-for="Password" for="password">Password <span class="star-span">*</span></label>
+                  <input asp-for="Password"
+                         type="password"
+                         class="form-input"
+                         placeholder="Enter Password ..." />
+                  <span asp-validation-for="Password" class="text-danger"></span> <br />
+                  <label asp-for="ConfirmPassword" for="password">Confirm Password <span class="star-span">*</span></label>
+                  <input asp-for="ConfirmPassword"
+                         type="password"
+                         class="form-input"
+                         placeholder="Enter Confirm Password ..." />
+                  <span asp-validation-for="ConfirmPassword" class="text-danger"></span> <br />
+                  <p class="privicy-policy">
+                      Your personal data will be used to support your experience
+                      throughout this website, to manage access to your account, and
+                      for other purposes described in our
+                      <a href="#">privacy policy.</a>
+                  </p>
+                  <center>
+                      <span style="color:#666">Already Have Account? </span><a style="text-decoration:none;color:#fcbe00;width:180px;text-align:center" asp-controller="account" asp-action="memberlogin">Login</a>
+                  </center>
+                  <button type="submit" form="RegisterForm">Register</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+ 
